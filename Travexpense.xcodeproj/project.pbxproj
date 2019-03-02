@@ -7,21 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02B7A8D80979716218A16522 /* Pods_Travexpense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897A6009B002E92D7CD330D6 /* Pods_Travexpense.framework */; };
 		1E047E9A222762540077896C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047E99222762540077896C /* AppDelegate.swift */; };
-		1E047E9C222762540077896C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047E9B222762540077896C /* ViewController.swift */; };
+		1E047E9C222762540077896C /* ExpenseOverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047E9B222762540077896C /* ExpenseOverviewController.swift */; };
 		1E047E9F222762540077896C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E047E9D222762540077896C /* Main.storyboard */; };
 		1E047EA1222762570077896C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E047EA0222762570077896C /* Assets.xcassets */; };
 		1E047EA4222762570077896C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E047EA2222762570077896C /* LaunchScreen.storyboard */; };
+		1E047EAC2227669E0077896C /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047EAB2227669E0077896C /* DatabaseManager.swift */; };
+		1E047EB022276BB30077896C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E047EAF22276BB30077896C /* GoogleService-Info.plist */; };
+		1E047EB222276D790077896C /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047EB122276D790077896C /* Expense.swift */; };
+		1E047EB422276D940077896C /* ExpenseEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047EB322276D940077896C /* ExpenseEnum.swift */; };
+		1E047EB622276DAB0077896C /* DatabaseKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047EB522276DAB0077896C /* DatabaseKeys.swift */; };
+		1E047EBB22276ECC0077896C /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047EBA22276ECC0077896C /* UIViewController+Alerts.swift */; };
+		1E047EBE22283A600077896C /* EnterExpenseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047EBD22283A600077896C /* EnterExpenseController.swift */; };
+		1E047EC022283A910077896C /* DetailedBalanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047EBF22283A910077896C /* DetailedBalanceController.swift */; };
+		1E047EC8222854B60077896C /* TravelersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047EC7222854B60077896C /* TravelersCell.swift */; };
+		1E047ECA222869CC0077896C /* TravelerBalanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047EC9222869CC0077896C /* TravelerBalanceController.swift */; };
+		1E047EF2222A0D480077896C /* TravelerSharingExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047EF1222A0D480077896C /* TravelerSharingExpenseCell.swift */; };
+		1E047EF4222A0FA70077896C /* Traveler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047EF3222A0FA70077896C /* Traveler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1E047E96222762540077896C /* Travexpense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travexpense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E047E99222762540077896C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1E047E9B222762540077896C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1E047E9B222762540077896C /* ExpenseOverviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseOverviewController.swift; sourceTree = "<group>"; };
 		1E047E9E222762540077896C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1E047EA0222762570077896C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E047EA3222762570077896C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E047EA5222762570077896C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E047EAB2227669E0077896C /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		1E047EAF22276BB30077896C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		1E047EB122276D790077896C /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
+		1E047EB322276D940077896C /* ExpenseEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEnum.swift; sourceTree = "<group>"; };
+		1E047EB522276DAB0077896C /* DatabaseKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseKeys.swift; sourceTree = "<group>"; };
+		1E047EBA22276ECC0077896C /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
+		1E047EBD22283A600077896C /* EnterExpenseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterExpenseController.swift; sourceTree = "<group>"; };
+		1E047EBF22283A910077896C /* DetailedBalanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedBalanceController.swift; sourceTree = "<group>"; };
+		1E047EC7222854B60077896C /* TravelersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelersCell.swift; sourceTree = "<group>"; };
+		1E047EC9222869CC0077896C /* TravelerBalanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerBalanceController.swift; sourceTree = "<group>"; };
+		1E047EF1222A0D480077896C /* TravelerSharingExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerSharingExpenseCell.swift; sourceTree = "<group>"; };
+		1E047EF3222A0FA70077896C /* Traveler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traveler.swift; sourceTree = "<group>"; };
+		3C69E43791D69DB91630F349 /* Pods-Travexpense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travexpense.release.xcconfig"; path = "Target Support Files/Pods-Travexpense/Pods-Travexpense.release.xcconfig"; sourceTree = "<group>"; };
+		50B78BAFE3B2B99AD41CDFF1 /* Pods-Travexpense.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travexpense.debug.xcconfig"; path = "Target Support Files/Pods-Travexpense/Pods-Travexpense.debug.xcconfig"; sourceTree = "<group>"; };
+		897A6009B002E92D7CD330D6 /* Pods_Travexpense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travexpense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02B7A8D80979716218A16522 /* Pods_Travexpense.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +69,8 @@
 			children = (
 				1E047E98222762540077896C /* Travexpense */,
 				1E047E97222762540077896C /* Products */,
+				29F2C6BF88E906F389877B6A /* Pods */,
+				80427CD9F133D2B850B1186E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +86,74 @@
 			isa = PBXGroup;
 			children = (
 				1E047E99222762540077896C /* AppDelegate.swift */,
-				1E047E9B222762540077896C /* ViewController.swift */,
+				1E047EB722276E0B0077896C /* Model */,
+				1E047EB822276E1E0077896C /* DatabaseHelpers */,
+				1E047EB922276E300077896C /* Controllers */,
+				1E047EBC22276EE90077896C /* Extensions */,
 				1E047E9D222762540077896C /* Main.storyboard */,
 				1E047EA0222762570077896C /* Assets.xcassets */,
 				1E047EA2222762570077896C /* LaunchScreen.storyboard */,
+				1E047EAF22276BB30077896C /* GoogleService-Info.plist */,
 				1E047EA5222762570077896C /* Info.plist */,
 			);
 			path = Travexpense;
+			sourceTree = "<group>";
+		};
+		1E047EB722276E0B0077896C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1E047EB122276D790077896C /* Expense.swift */,
+				1E047EB322276D940077896C /* ExpenseEnum.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1E047EB822276E1E0077896C /* DatabaseHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				1E047EB522276DAB0077896C /* DatabaseKeys.swift */,
+				1E047EAB2227669E0077896C /* DatabaseManager.swift */,
+			);
+			path = DatabaseHelpers;
+			sourceTree = "<group>";
+		};
+		1E047EB922276E300077896C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1E047EC9222869CC0077896C /* TravelerBalanceController.swift */,
+				1E047E9B222762540077896C /* ExpenseOverviewController.swift */,
+				1E047EBD22283A600077896C /* EnterExpenseController.swift */,
+				1E047EF1222A0D480077896C /* TravelerSharingExpenseCell.swift */,
+				1E047EF3222A0FA70077896C /* Traveler.swift */,
+				1E047EBF22283A910077896C /* DetailedBalanceController.swift */,
+				1E047EC7222854B60077896C /* TravelersCell.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1E047EBC22276EE90077896C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1E047EBA22276ECC0077896C /* UIViewController+Alerts.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		29F2C6BF88E906F389877B6A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				50B78BAFE3B2B99AD41CDFF1 /* Pods-Travexpense.debug.xcconfig */,
+				3C69E43791D69DB91630F349 /* Pods-Travexpense.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		80427CD9F133D2B850B1186E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				897A6009B002E92D7CD330D6 /* Pods_Travexpense.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +163,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E047EA8222762570077896C /* Build configuration list for PBXNativeTarget "Travexpense" */;
 			buildPhases = (
+				C373A8CDFB14A1DED29347F9 /* [CP] Check Pods Manifest.lock */,
 				1E047E92222762540077896C /* Sources */,
 				1E047E93222762540077896C /* Frameworks */,
 				1E047E94222762540077896C /* Resources */,
+				0190B080F83D4E4AFE3AA698 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E047EA4222762570077896C /* LaunchScreen.storyboard in Resources */,
+				1E047EB022276BB30077896C /* GoogleService-Info.plist in Resources */,
 				1E047EA1222762570077896C /* Assets.xcassets in Resources */,
 				1E047E9F222762540077896C /* Main.storyboard in Resources */,
 			);
@@ -130,13 +225,87 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0190B080F83D4E4AFE3AA698 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Travexpense/Pods-Travexpense-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Travexpense/Pods-Travexpense-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C373A8CDFB14A1DED29347F9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Travexpense-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1E047E92222762540077896C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E047E9C222762540077896C /* ViewController.swift in Sources */,
+				1E047EC022283A910077896C /* DetailedBalanceController.swift in Sources */,
+				1E047EB622276DAB0077896C /* DatabaseKeys.swift in Sources */,
+				1E047EC8222854B60077896C /* TravelersCell.swift in Sources */,
+				1E047EBE22283A600077896C /* EnterExpenseController.swift in Sources */,
+				1E047EF2222A0D480077896C /* TravelerSharingExpenseCell.swift in Sources */,
+				1E047EB422276D940077896C /* ExpenseEnum.swift in Sources */,
+				1E047EB222276D790077896C /* Expense.swift in Sources */,
+				1E047E9C222762540077896C /* ExpenseOverviewController.swift in Sources */,
+				1E047EAC2227669E0077896C /* DatabaseManager.swift in Sources */,
+				1E047EBB22276ECC0077896C /* UIViewController+Alerts.swift in Sources */,
 				1E047E9A222762540077896C /* AppDelegate.swift in Sources */,
+				1E047EF4222A0FA70077896C /* Traveler.swift in Sources */,
+				1E047ECA222869CC0077896C /* TravelerBalanceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +449,7 @@
 		};
 		1E047EA9222762570077896C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50B78BAFE3B2B99AD41CDFF1 /* Pods-Travexpense.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +468,7 @@
 		};
 		1E047EAA222762570077896C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C69E43791D69DB91630F349 /* Pods-Travexpense.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
