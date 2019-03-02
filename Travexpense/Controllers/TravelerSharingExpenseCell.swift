@@ -15,6 +15,11 @@ class TravelerSharingExpenseCell: UITableViewCell {
   
   @IBOutlet weak var travelerNameLabel: UILabel!
   
+  var item: TravelerInfo? {
+    didSet{
+     travelerNameLabel.text = item?.title
+    }
+  }
   
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -9,28 +9,44 @@
 import Foundation
 
 //This info I'll get from my DataBase under user
-class Traveler {
-  
+
+struct Traveler {
   let travelerName: String
-  
-  var isTravelerSelected = false
-  
-  init(travelerName: String) {
-    self.travelerName = travelerName
-  }
-  
 }
 
-struct SelectedTravelers {
+class TravelerInfo {
+  private var ArrayOfTravelersNames: Traveler
   
- var travelers = [Traveler.init(travelerName: "Oli"),
-                        Traveler.init(travelerName: "Aaron"),
-                        Traveler.init(travelerName: "Pritesh"),
-                        Traveler.init(travelerName: "Jeff")]
+  var isSelected = false
   
-  var selectedTravelers: [Traveler] {
-    return travelers.filter{return $0.isTravelerSelected}
+  var title: String {
+    return ArrayOfTravelersNames.travelerName
   }
   
-  
+  init(item: Traveler) {
+    self.ArrayOfTravelersNames = item
+  }
 }
+
+class TravelerModel {
+  var travelerInfo = [TravelerInfo]()
+  
+  var selectedItems: [TravelerInfo] {
+    return travelerInfo.filter{return $0.isSelected}
+  }
+  
+  let dataArray = [Traveler(travelerName: "Oli"),
+                   Traveler(travelerName: "Aaron"),
+                   Traveler(travelerName: "Jeff"),
+                   Traveler(travelerName: "Pritesh")]
+  
+  init() {
+    travelerInfo = dataArray.map {TravelerInfo(item: $0)}
+  }
+}
+
+
+
+
+
+

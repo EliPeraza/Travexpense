@@ -256,15 +256,15 @@ public struct BlendImageProcessor: ImageProcessor {
     /// - Returns: The processed image.
     ///
     /// - Note: See documentation of `ImageProcessor` protocol for more.
-    public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> Image? {
-        switch item {
-        case .image(let image):
-            return image.kf.scaled(to: options.scaleFactor)
-                        .kf.image(withBlendMode: blendMode, alpha: alpha, backgroundColor: backgroundColor)
-        case .data:
-            return (DefaultImageProcessor.default >> self).process(item: item, options: options)
-        }
+  public func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> Image? {
+    switch item {
+    case .image(let image):
+      return image.kf.scaled(to: options.scaleFactor)
+        .kf.image(withBlendMode: blendMode, alpha: alpha, backgroundColor: backgroundColor)
+    case .data:
+      return (DefaultImageProcessor.default >> self).process(item: item, options: options)
     }
+  }
 }
 #endif
 

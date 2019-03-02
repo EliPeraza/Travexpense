@@ -10,9 +10,8 @@ import UIKit
 
 class EnterExpenseController: UIViewController {
 
-  var travelers = SelectedTravelers()
+  var travelerModel = TravelerModel()
   
-
   @IBOutlet var arrayOfExpenseCategoryButton: [UIButton]!
   
   
@@ -31,13 +30,17 @@ class EnterExpenseController: UIViewController {
   override func viewDidLoad() {
         super.viewDidLoad()
     
-    buttonToAddSelectedTravelers.isEnabled = !travelers.selectedTravelers.isEmpty
+    
+    tableToSelectTravelers.allowsMultipleSelection = true
 
     tableToSelectTravelers.delegate = self
     tableToSelectTravelers.dataSource = self
     
-    }
+    buttonToAddSelectedTravelers.isEnabled = !travelerModel.selectedItems.isEmpty
+
     
+    }
+  
   @IBAction func expenseCategoryButtonPressed(_ sender: UIButton) {
     arrayOfExpenseCategoryButton.forEach { (button) in
       UIView.animate(withDuration: 0.3, animations: {
@@ -59,23 +62,25 @@ class EnterExpenseController: UIViewController {
   
   
   @IBAction func selectTravelersButtonPressed(_ sender: UIButton) {
-    print(travelers.selectedTravelers.map{$0.travelerName})
+    print(travelerModel.selectedItems.map{$0.title})
+    
   }
   
 }
 
 extension EnterExpenseController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    travelers.travelers[indexPath.row].isTravelerSelected = true
     
-    buttonToAddSelectedTravelers.isEnabled = !travelers.selectedTravelers.isEmpty
+    travelerModel.travelerInfo[indexPath.row].isSelected = true
+    
+     buttonToAddSelectedTravelers.isEnabled = !travelerModel.selectedItems.isEmpty
     
     
   }
   func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-    travelers.travelers[indexPath.row].isTravelerSelected = false
-    
-    buttonToAddSelectedTravelers.isEnabled = !travelers.selectedTravelers.isEmpty
+    travelerModel.travelerInfo[indexPath.row].isSelected = false
+
+     buttonToAddSelectedTravelers.isEnabled = !travelerModel.selectedItems.isEmpty
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -86,20 +91,20 @@ extension EnterExpenseController: UITableViewDelegate {
 
 extension EnterExpenseController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return travelers.travelers.count
+    return travelerModel.travelerInfo.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableToSelectTravelers.dequeueReusableCell(withIdentifier: "TravelerSharingExpenseCell", for: indexPath) as?  TravelerSharingExpenseCell else { return UITableViewCell()}
+    cell.item = travelerModel.travelerInfo[indexPath.row]
+    cell.travelerNameLabel.text = travelerModel.travelerInfo[indexPath.row].title
     
-    cell.travelerNameLabel.text = travelers.travelers[indexPath.row].travelerName
+    if travelerModel.travelerInfo[indexPath.row].isSelected {
+      tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+    } else {
+      tableView.deselectRow(at: indexPath, animated: false)
+    }
     
-//    if travelers.selectedTravelers[indexPath.row].isTravelerSelected{
-//      tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-//    } else {
-//      tableView.deselectRow(at: indexPath, animated: false)
-//    }
-    
-    return cell 
+    return cell
   }
 }

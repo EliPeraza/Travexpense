@@ -11,6 +11,7 @@ import UIKit
 class ExpenseOverviewController: UIViewController {
   
   @IBOutlet weak var transportationLabel: UILabel!
+  
   @IBOutlet weak var transportationButton: UIButton!
   
   @IBOutlet weak var lodgingLabel: UILabel!
@@ -27,8 +28,7 @@ class ExpenseOverviewController: UIViewController {
   
   @IBOutlet weak var travelersCollectionView: UICollectionView!
   
-  
-  var travelersInTrip = SelectedTravelers()
+  let travelerModel = TravelerModel()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -48,13 +48,15 @@ class ExpenseOverviewController: UIViewController {
 extension ExpenseOverviewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return travelersInTrip.travelers.count
+//    return travelersInTrip.travelers.count
+    
+    return travelerModel.travelerInfo.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = travelersCollectionView.dequeueReusableCell(withReuseIdentifier: "TravelerCell", for: indexPath) as? TravelersCell else {return UICollectionViewCell()}
     cell.travelerImage.image = UIImage(named: "traveler")
-    cell.travelUsername.text = travelersInTrip.travelers[indexPath.row].travelerName
+    cell.travelUsername.text = travelerModel.travelerInfo[indexPath.row].title
     return cell
   }
   
