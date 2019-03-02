@@ -28,15 +28,42 @@ class ExpenseOverviewController: UIViewController {
   @IBOutlet weak var travelersCollectionView: UICollectionView!
   
   
+  var travelersInTrip = SelectedTravelers()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-
-
+    travelersCollectionView.delegate = self
+    
+    travelersCollectionView.dataSource = self
+    
   }
-
+  
   
   @IBAction func addExpenseButtonPressed(_ sender: UIButton) {
     
+  }
+  
+}
+
+extension ExpenseOverviewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+  
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return travelersInTrip.travelers.count
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    guard let cell = travelersCollectionView.dequeueReusableCell(withReuseIdentifier: "TravelerCell", for: indexPath) as? TravelersCell else {return UICollectionViewCell()}
+    cell.travelerImage.image = UIImage(named: "traveler")
+    cell.travelUsername.text = travelersInTrip.travelers[indexPath.row].travelerName
+    return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize.init(width: (travelersCollectionView.bounds.width) / 2, height: travelersCollectionView.bounds.height)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    //Segue user
   }
   
 }
