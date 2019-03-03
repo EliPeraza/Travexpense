@@ -21,8 +21,9 @@ enum ExpenseType: String, CaseIterable {
   case lodging = "Lodging"
   case entertainment = "Entertainment"
   case food = "Food"
-  case other = "Other"
+  
 }
+
 
 enum Transportation: String,CaseIterable {
   case flight = "Flight"

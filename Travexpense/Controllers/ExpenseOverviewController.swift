@@ -10,33 +10,26 @@ import UIKit
 
 class ExpenseOverviewController: UIViewController {
   
-  @IBOutlet weak var transportationLabel: UILabel!
   
-  @IBOutlet weak var transportationButton: UIButton!
-  
-  @IBOutlet weak var lodgingLabel: UILabel!
-  
-  @IBOutlet weak var lodgingButton: UIButton!
-  
-  @IBOutlet weak var entertainmentLabel: UILabel!
-  
-  @IBOutlet weak var entertainmentButton: UIButton!
-  
-  @IBOutlet weak var totalButton: UIButton!
-  
-  @IBOutlet weak var totalLabel: UILabel!
-  
+  @IBOutlet weak var placeName: UILabel!
+  @IBOutlet weak var placeImage: UIImageView!
+  @IBOutlet weak var expenseCollectionView: UICollectionView!
   @IBOutlet weak var travelersCollectionView: UICollectionView!
   
   let travelerModel = TravelerModel()
+  let expenseCategory = ["Transportation", "Lodging", "Entertainment", "Food"]
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    travelersCollectionView.delegate = self
     
+    expenseCollectionView.delegate = self
+    expenseCollectionView.dataSource = self
+    
+    travelersCollectionView.delegate = self
     travelersCollectionView.dataSource = self
     
   }
+ 
   
   
   @IBAction func addExpenseButtonPressed(_ sender: UIButton) {
@@ -48,21 +41,74 @@ class ExpenseOverviewController: UIViewController {
 extension ExpenseOverviewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//    return travelersInTrip.travelers.count
     
-    return travelerModel.travelerInfo.count
+    switch collectionView {
+    case travelersCollectionView:
+      return travelerModel.travelerInfo.count
+    case expenseCollectionView:
+      print("this is the count for expense category \(expenseCategory.count)")
+
+      return expenseCategory.count
+    default:
+      return 4
+    }
+   
+    
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = travelersCollectionView.dequeueReusableCell(withReuseIdentifier: "TravelerCell", for: indexPath) as? TravelersCell else {return UICollectionViewCell()}
-    cell.travelerImage.image = UIImage(named: "traveler")
-    cell.travelUsername.text = travelerModel.travelerInfo[indexPath.row].title
-    return cell
+    
+    switch  collectionView {
+    case travelersCollectionView:
+      guard let cell = travelersCollectionView.dequeueReusableCell(withReuseIdentifier: "TravelerCell", for: indexPath) as? TravelersCell else {return UICollectionViewCell()}
+      cell.travelerImage.image = UIImage(named: "traveler")
+      cell.travelUsername.text = travelerModel.travelerInfo[indexPath.row].title
+      return cell
+    case expenseCollectionView:
+      guard let cell = expenseCollectionView.dequeueReusableCell(withReuseIdentifier: "TripExpenseOverviewCell", for: indexPath) as? TripExpenseOverviewCell else {return UICollectionViewCell()}
+      cell.categoryName.text = expenseCategory[indexPath.row]
+      
+      switch expenseCategory[indexPath.row].lowercased(){
+      case "transportation":
+      cell.categoryImage.image = UIImage(named: "train")
+      case "lodging":
+        cell.categoryImage.image = UIImage(named: "lodging")
+
+      case "entertainment":
+        cell.categoryImage.image = UIImage(named: "tickets")
+
+      case "food":
+        cell.categoryImage.image = UIImage(named: "food")
+
+      default:
+        cell.categoryImage.image = UIImage(named: "traveler")
+
+      }
+      
+      cell.layer.cornerRadius = 5.0
+      cell.layer.borderColor = #colorLiteral(red: 0.4309224188, green: 0.5425195694, blue: 0.6682616472, alpha: 1)
+      cell.layer.borderWidth = 1.0
+     
+      return cell
+    default:
+      let cell = UICollectionViewCell()
+      return cell
+    }
+  
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize.init(width: (travelersCollectionView.bounds.width) / 2, height: travelersCollectionView.bounds.height)
+    switch  collectionView {
+    case travelersCollectionView:
+      return CGSize.init(width: (travelersCollectionView.bounds.width) / 2, height: travelersCollectionView.bounds.height)
+    case expenseCollectionView:
+      return CGSize.init(width: 130, height: 130)
+
+    default:
+      return CGSize.init(width: 200, height: 300)
+    }
   }
+  
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     //Segue user
