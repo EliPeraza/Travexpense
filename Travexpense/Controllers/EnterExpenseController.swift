@@ -15,9 +15,6 @@ class EnterExpenseController: UIViewController {
   @IBOutlet var arrayOfExpenseCategoryButton: [UIButton]!
   
   
-  @IBOutlet var arrayOfExpenseTypeButtons: [UIButton]!
-  
-  
   @IBOutlet weak var amountTextField: UITextField!
   
   @IBOutlet weak var expenseDescriptionField: UITextField!
@@ -25,19 +22,19 @@ class EnterExpenseController: UIViewController {
   @IBOutlet weak var tableToSelectTravelers: UITableView!
   
   
-  @IBOutlet weak var buttonToAddSelectedTravelers: UIButton!
+  @IBOutlet weak var saveExpenseButton: UIButton!
   
   override func viewDidLoad() {
         super.viewDidLoad()
     
     
     tableToSelectTravelers.allowsMultipleSelection = true
-
     tableToSelectTravelers.delegate = self
     tableToSelectTravelers.dataSource = self
     
-    buttonToAddSelectedTravelers.isEnabled = !travelerModel.selectedItems.isEmpty
+    saveExpenseButton.isEnabled = !travelerModel.selectedItems.isEmpty
 
+    configureExpenseCategoryButton()
     
     }
   
@@ -51,20 +48,22 @@ class EnterExpenseController: UIViewController {
   }
   
   
-  @IBAction func expenseTypeButtonPressed(_ sender: UIButton) {
-    arrayOfExpenseTypeButtons.forEach { (button) in
-      UIView.animate(withDuration: 0.3, animations: {
-        button.isHidden = !button.isHidden
-        self.view.layoutIfNeeded()
-      })
-    }
-  }
+
   
   
   @IBAction func selectTravelersButtonPressed(_ sender: UIButton) {
     print(travelerModel.selectedItems.map{$0.title})
     
   }
+  
+  func configureExpenseCategoryButton() {
+    let types = ExpenseType.allCases
+    print(types)
+    arrayOfExpenseCategoryButton.forEach { (button) in
+      button.setTitle("hola", for: .normal)
+    }
+  }
+  
   
 }
 
@@ -73,14 +72,14 @@ extension EnterExpenseController: UITableViewDelegate {
     
     travelerModel.travelerInfo[indexPath.row].isSelected = true
     
-     buttonToAddSelectedTravelers.isEnabled = !travelerModel.selectedItems.isEmpty
+     saveExpenseButton.isEnabled = !travelerModel.selectedItems.isEmpty
     
     
   }
   func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
     travelerModel.travelerInfo[indexPath.row].isSelected = false
 
-     buttonToAddSelectedTravelers.isEnabled = !travelerModel.selectedItems.isEmpty
+     saveExpenseButton.isEnabled = !travelerModel.selectedItems.isEmpty
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

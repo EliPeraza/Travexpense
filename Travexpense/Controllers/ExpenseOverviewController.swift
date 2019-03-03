@@ -12,9 +12,17 @@ class ExpenseOverviewController: UIViewController {
   
   
   @IBOutlet weak var placeName: UILabel!
+  
   @IBOutlet weak var placeImage: UIImageView!
+  
+  @IBOutlet weak var instuctionLabelOne: UILabel!
+  
+  @IBOutlet weak var instructionLabelTwo: UILabel!
   @IBOutlet weak var expenseCollectionView: UICollectionView!
-  @IBOutlet weak var travelersCollectionView: UICollectionView!
+  
+  @IBOutlet weak var instructionLabelThree: UILabel!
+  
+  @IBOutlet weak var travelerBalanceTableView: UITableView!
   
   let travelerModel = TravelerModel()
   let expenseCategory = ["Transportation", "Lodging", "Entertainment", "Food"]
@@ -25,11 +33,18 @@ class ExpenseOverviewController: UIViewController {
     expenseCollectionView.delegate = self
     expenseCollectionView.dataSource = self
     
-    travelersCollectionView.delegate = self
-    travelersCollectionView.dataSource = self
+    travelerBalanceTableView.delegate = self
+    travelerBalanceTableView.dataSource = self
+    
+    instuctionLabelOne.text = "Checkout the money stuff below!"
+    instructionLabelTwo.text = """
+    Click on a name to see a detailed balance with a friend.
+    Green: people owe you money. Red: You owe them money
+    """
+    instructionLabelThree.text = "Click below for a trip expense overview:"
     
   }
- 
+  
   
   
   @IBAction func addExpenseButtonPressed(_ sender: UIButton) {
@@ -41,77 +56,68 @@ class ExpenseOverviewController: UIViewController {
 extension ExpenseOverviewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
-    switch collectionView {
-    case travelersCollectionView:
-      return travelerModel.travelerInfo.count
-    case expenseCollectionView:
-      print("this is the count for expense category \(expenseCategory.count)")
-
-      return expenseCategory.count
-    default:
-      return 4
-    }
-   
-    
+    return expenseCategory.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
-    switch  collectionView {
-    case travelersCollectionView:
-      guard let cell = travelersCollectionView.dequeueReusableCell(withReuseIdentifier: "TravelerCell", for: indexPath) as? TravelersCell else {return UICollectionViewCell()}
-      cell.travelerImage.image = UIImage(named: "traveler")
-      cell.travelUsername.text = travelerModel.travelerInfo[indexPath.row].title
-      return cell
-    case expenseCollectionView:
-      guard let cell = expenseCollectionView.dequeueReusableCell(withReuseIdentifier: "TripExpenseOverviewCell", for: indexPath) as? TripExpenseOverviewCell else {return UICollectionViewCell()}
-      cell.categoryName.text = expenseCategory[indexPath.row]
-      
-      switch expenseCategory[indexPath.row].lowercased(){
-      case "transportation":
+    guard let cell = expenseCollectionView.dequeueReusableCell(withReuseIdentifier: "TripExpenseOverviewCell", for: indexPath) as? TripExpenseOverviewCell else {return UICollectionViewCell()}
+    
+    cell.categoryName.text = expenseCategory[indexPath.row]
+    
+    switch expenseCategory[indexPath.row].lowercased(){
+    case "transportation":
       cell.categoryImage.image = UIImage(named: "train")
-      case "lodging":
-        cell.categoryImage.image = UIImage(named: "lodging")
-
-      case "entertainment":
-        cell.categoryImage.image = UIImage(named: "tickets")
-
-      case "food":
-        cell.categoryImage.image = UIImage(named: "food")
-
-      default:
-        cell.categoryImage.image = UIImage(named: "traveler")
-
-      }
+    case "lodging":
+      cell.categoryImage.image = UIImage(named: "lodging")
       
-      cell.layer.cornerRadius = 5.0
-      cell.layer.borderColor = #colorLiteral(red: 0.4309224188, green: 0.5425195694, blue: 0.6682616472, alpha: 1)
-      cell.layer.borderWidth = 1.0
-     
-      return cell
+    case "entertainment":
+      cell.categoryImage.image = UIImage(named: "tickets")
+      
+    case "food":
+      cell.categoryImage.image = UIImage(named: "food")
+      
     default:
-      let cell = UICollectionViewCell()
-      return cell
+      cell.categoryImage.image = UIImage(named: "traveler")
+      
     }
-  
+    
+    cell.layer.cornerRadius = 5.0
+    cell.layer.borderColor = #colorLiteral(red: 0.4309224188, green: 0.5425195694, blue: 0.6682616472, alpha: 1)
+    cell.layer.borderWidth = 1.0
+    
+    return cell
+    
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    switch  collectionView {
-    case travelersCollectionView:
-      return CGSize.init(width: (travelersCollectionView.bounds.width) / 2, height: travelersCollectionView.bounds.height)
-    case expenseCollectionView:
-      return CGSize.init(width: 130, height: 130)
-
-    default:
-      return CGSize.init(width: 200, height: 300)
-    }
+    
+    return CGSize.init(width: 80, height: 80)
+    
   }
   
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     //Segue user
+  }
+  
+}
+
+extension ExpenseOverviewController: UITableViewDataSource, UITableViewDelegate {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return travelerModel.travelerInfo.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = travelerBalanceTableView.dequeueReusableCell(withIdentifier: "TravelerBalance", for: indexPath)
+    let currentTraveler = travelerModel.travelerInfo[indexPath.row]
+    cell.textLabel?.text = currentTraveler.title
+    cell.imageView?.image = UIImage(named: "traveler")
+    return cell
+  }
+  
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return "Traveler's balance:"
   }
   
 }
