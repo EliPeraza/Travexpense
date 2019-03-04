@@ -45,6 +45,13 @@ class ExpenseOverviewController: UIViewController {
     
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let indexPath = travelerBalanceTableView.indexPathForSelectedRow,
+      let traverlerBalanceVC = segue.destination as? TravelerBalanceController else {fatalError("Error in segue")}
+    let currentUserBeinSegue = travelerModel.travelerInfo[indexPath.row]
+    
+    traverlerBalanceVC.travelerSentFromOverview = currentUserBeinSegue
+  }
   
   
   @IBAction func addExpenseButtonPressed(_ sender: UIButton) {
@@ -119,6 +126,8 @@ extension ExpenseOverviewController: UITableViewDataSource, UITableViewDelegate 
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     return "Traveler's balance:"
   }
+  
+
   
 }
 

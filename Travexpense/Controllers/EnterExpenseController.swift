@@ -9,11 +9,16 @@
 import UIKit
 
 class EnterExpenseController: UIViewController {
+  
+  //Var to save object to Firebase
+  var expenseCategory = String()
+  
 
   var travelerModel = TravelerModel()
   
   @IBOutlet var arrayOfExpenseCategoryButton: [UIButton]!
   
+  @IBOutlet weak var expenseCategoryButton: UIButton! 
   
   @IBOutlet weak var amountTextField: UITextField!
   
@@ -27,6 +32,7 @@ class EnterExpenseController: UIViewController {
   override func viewDidLoad() {
         super.viewDidLoad()
     
+    expenseCategoryButton.setTitle("Select Expense Category", for: .normal)
     
     tableToSelectTravelers.allowsMultipleSelection = true
     tableToSelectTravelers.delegate = self
@@ -35,8 +41,8 @@ class EnterExpenseController: UIViewController {
     saveExpenseButton.isEnabled = !travelerModel.selectedItems.isEmpty
 
     configureExpenseCategoryButton()
-    
     }
+
   
   @IBAction func expenseCategoryButtonPressed(_ sender: UIButton) {
     arrayOfExpenseCategoryButton.forEach { (button) in
@@ -45,10 +51,16 @@ class EnterExpenseController: UIViewController {
         self.view.layoutIfNeeded()
       })
     }
+    
   }
   
   
-
+  
+  @IBAction func selectionOfExpenseCategory(_ sender: UIButton) {
+    let index = sender.tag
+    expenseCategory = arrayOfExpenseCategoryButton[index].titleLabel?.text ?? "Tapped didn't work"
+    dump (expenseCategory)
+    }
   
   
   @IBAction func selectTravelersButtonPressed(_ sender: UIButton) {
@@ -57,12 +69,14 @@ class EnterExpenseController: UIViewController {
   }
   
   func configureExpenseCategoryButton() {
-    let types = ExpenseType.allCases
-    print(types)
-    arrayOfExpenseCategoryButton.forEach { (button) in
-      button.setTitle("hola", for: .normal)
+    var index = 0
+    for expenseCategory in ExpenseType.allCases {
+      arrayOfExpenseCategoryButton[index].setTitle(expenseCategory.rawValue, for: .normal)
+      index += 1
     }
   }
+  
+  
   
   
 }
