@@ -17,7 +17,7 @@ struct CellExpansion {
 
 class TravelerBalanceController: UIViewController {
 
-  var travelerSentFromOverview: TravelerInfo!
+  var travelerSentFromOverview = String()
 
   var tableViewData = [CellExpansion]()
   
@@ -35,6 +35,7 @@ class TravelerBalanceController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+      
       tableView.dataSource = self
       tableView.delegate = self
       
@@ -43,23 +44,29 @@ class TravelerBalanceController: UIViewController {
                        CellExpansion(opened: false, title: "title 3", sectionData: ["Cell 1", "Cell 2", "Cell 3"]),
                        CellExpansion(opened: false, title: "title 4", sectionData: ["Cell 1", "Cell 2", "Cell 3"])]
       
-    setupUI()
+//    setupUI()
       
     }
   
   func setupUI() {
     self.currentUserName.text = "Eli"
-    self.userWhoseBalanceLabel.text = travelerSentFromOverview.title
+    self.userWhoseBalanceLabel.text = travelerSentFromOverview
+    
   }
+  
+  @IBAction func backButtonPressed(_ sender: UIButton) {
+  dismiss(animated: true, completion: nil)
+  }
+  
   
 }
 
 extension TravelerBalanceController: UITableViewDataSource, UITableViewDelegate {
-  
+
   func numberOfSections(in tableView: UITableView) -> Int {
     return tableViewData.count
   }
-  
+
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if tableViewData[section].opened {
       return tableViewData[section].sectionData.count + 1
@@ -70,7 +77,7 @@ extension TravelerBalanceController: UITableViewDataSource, UITableViewDelegate 
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "BalanceCell") else {return UITableViewCell()}
-    
+
     if indexPath.row == 0 {
       cell.textLabel?.text = tableViewData[indexPath.section].title
       return cell
@@ -78,9 +85,9 @@ extension TravelerBalanceController: UITableViewDataSource, UITableViewDelegate 
       cell.textLabel?.text = tableViewData[indexPath.section].sectionData[indexPath.row - 1]
       return cell
     }
-    
+
   }
-  
+
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if indexPath.row ==  0{
       if tableViewData[indexPath.section].opened == true {

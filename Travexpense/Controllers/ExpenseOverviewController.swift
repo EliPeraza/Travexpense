@@ -45,18 +45,20 @@ class ExpenseOverviewController: UIViewController {
     
   }
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    guard let indexPath = travelerBalanceTableView.indexPathForSelectedRow,
-      let traverlerBalanceVC = segue.destination as? TravelerBalanceController else {fatalError("Error in segue")}
-    let currentUserBeinSegue = travelerModel.travelerInfo[indexPath.row]
-    
-    traverlerBalanceVC.travelerSentFromOverview = currentUserBeinSegue
-  }
+  //  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  //    guard let indexPath = travelerBalanceTableView.indexPathForSelectedRow,
+  //      let traverlerBalanceVC = segue.destination as? TravelerBalanceController else {fatalError("Error in segue")}
+  //    let currentUserBeinSegue = travelerModel.travelerInfo[indexPath.row]
+  //
+  //    traverlerBalanceVC.travelerSentFromOverview = currentUserBeinSegue
+  //  }
   
   
-  @IBAction func addExpenseButtonPressed(_ sender: UIButton) {
-    
+  @IBAction func AddExpenseButtonPressed(_ sender: UIBarButtonItem) {
+    let enterExpenseController = EnterExpenseController()
+    navigationController?.pushViewController(enterExpenseController, animated: true)
   }
+  
   
 }
 
@@ -99,8 +101,8 @@ extension ExpenseOverviewController: UICollectionViewDataSource, UICollectionVie
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     
-    return CGSize.init(width: 80, height: 80)
-    
+//    return CGSize.init(width: 80, height: 80)
+    return CGSize(width: 90, height: 90)
   }
   
   
@@ -127,7 +129,18 @@ extension ExpenseOverviewController: UITableViewDataSource, UITableViewDelegate 
     return "Traveler's balance:"
   }
   
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let traverlerBalanceVC = TravelerBalanceController()
+    let currentUserBeinSegue = travelerModel.travelerInfo[indexPath.row].title
+    print("this is the current thing to segue: \(currentUserBeinSegue)")
 
+    traverlerBalanceVC.travelerSentFromOverview = currentUserBeinSegue
+
+    navigationController?.pushViewController(traverlerBalanceVC, animated: true
+    )
+  }
+  
+  
   
 }
 

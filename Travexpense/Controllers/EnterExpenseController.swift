@@ -13,6 +13,9 @@ class EnterExpenseController: UIViewController {
   //Var to save object to Firebase
   var expenseCategory = String()
   
+  
+  private var amountTextFieldPlaceholder = "Enter total amount for the expense"
+  private var expenseDescriptionPlaceHolder = "Enter expense description. Example: 'Train to Paris'"
 
   var travelerModel = TravelerModel()
   
@@ -39,9 +42,23 @@ class EnterExpenseController: UIViewController {
     tableToSelectTravelers.dataSource = self
     
     saveExpenseButton.isEnabled = !travelerModel.selectedItems.isEmpty
-
-    configureExpenseCategoryButton()
+    
+    
+    configureTextFields()
+    
+   
     }
+  
+  func configureTextFields() {
+    amountTextField.text = amountTextFieldPlaceholder
+    amountTextField.delegate = self
+    amountTextField.textColor = .lightGray
+    
+    expenseDescriptionField.text = expenseDescriptionPlaceHolder
+    expenseDescriptionField.delegate = self
+    expenseDescriptionField.textColor = .lightGray
+    
+  }
 
   
   @IBAction func expenseCategoryButtonPressed(_ sender: UIButton) {
@@ -68,6 +85,8 @@ class EnterExpenseController: UIViewController {
     
   }
   
+  
+  
   func configureExpenseCategoryButton() {
     var index = 0
     for expenseCategory in ExpenseType.allCases {
@@ -75,10 +94,7 @@ class EnterExpenseController: UIViewController {
       index += 1
     }
   }
-  
-  
-  
-  
+
 }
 
 extension EnterExpenseController: UITableViewDelegate {
@@ -119,5 +135,33 @@ extension EnterExpenseController: UITableViewDataSource {
     }
     
     return cell
+  }
+}
+
+extension EnterExpenseController: UITextFieldDelegate {
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    if textField.text == expenseDescriptionPlaceHolder {
+      textField.textColor = .black
+      textField.text = ""
+    }
+    
+    if textField.text == amountTextFieldPlaceholder {
+     textField.textColor = .black
+      textField.text = ""
+    }
+    
+  
+    
+  }
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    
+    if textField.text == "" {
+      textField.textColor = .lightGray
+      textField.text = expenseDescriptionPlaceHolder
+      textField.text = amountTextFieldPlaceholder
+    }
+    
+    
+    
   }
 }
