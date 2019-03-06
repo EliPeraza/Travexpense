@@ -10,8 +10,11 @@ import UIKit
 
 class DetailedBalanceController: UIViewController {
 
+  
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+      
 
     }
     
