@@ -187,14 +187,14 @@
                                 <rect key="frame" x="0.0" y="27" width="375" height="812"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HXf-xg-InX">
-                                <rect key="frame" x="11" y="179.66666666666666" width="353" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HXf-xg-InX">
+                                <rect key="frame" x="11" y="339.66666666666669" width="353" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select travelers to split this:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlx-Zj-jZP">
-                                <rect key="frame" x="11" y="331.66666666666669" width="353" height="24"/>
+                                <rect key="frame" x="11" y="491.66666666666669" width="353" height="24.000000000000057"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.28696354769999999" green="0.33798416450000002" blue="0.41194122179999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -206,7 +206,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QGh-vs-n3E">
-                                <rect key="frame" x="11" y="138.66666666666666" width="353" height="30"/>
+                                <rect key="frame" x="11" y="138.66666666666666" width="353" height="189.99999999999997"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRM-dR-s69">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="30"/>
@@ -218,57 +218,56 @@
                                             <action selector="expenseCategoryButtonPressed:" destination="noI-jk-Czn" eventType="touchUpInside" id="LJs-7e-DKq"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJN-vd-aqF">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJN-vd-aqF">
+                                        <rect key="frame" x="0.0" y="40" width="353" height="30"/>
                                         <color key="backgroundColor" red="0.45332847409999999" green="0.53923641820000001" blue="0.65702370909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="NGs-JU-K2d"/>
                                         </constraints>
-                                        <state key="normal" title="1">
+                                        <state key="normal" title="transportation">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="saveExpenseCategory" destination="noI-jk-Czn" eventType="touchUpInside" id="jSH-bm-VDF"/>
+                                            <action selector="saveSelectedButton:" destination="noI-jk-Czn" eventType="touchUpInside" id="p4d-vm-t1e"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBI-Sl-Jws">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="30"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBI-Sl-Jws">
+                                        <rect key="frame" x="0.0" y="80" width="353" height="30"/>
                                         <color key="backgroundColor" red="0.45332847409999999" green="0.53923641820000001" blue="0.65702370909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="JkR-Ee-HwK"/>
                                         </constraints>
-                                        <state key="normal" title="2">
+                                        <state key="normal" title="lodging">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="saveExpenseCategory" destination="noI-jk-Czn" eventType="touchUpInside" id="31e-7O-xrX"/>
-                                            <action selector="selectionOfExpenseCategory:" destination="noI-jk-Czn" eventType="touchUpInside" id="bYo-fN-8PM"/>
+                                            <action selector="saveSelectedButton:" destination="noI-jk-Czn" eventType="touchUpInside" id="Ujl-xR-E4S"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpp-Hp-OlP">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="30"/>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpp-Hp-OlP">
+                                        <rect key="frame" x="0.0" y="120.00000000000003" width="353" height="30"/>
                                         <color key="backgroundColor" red="0.45332847409999999" green="0.53923641820000001" blue="0.65702370909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="wL6-z6-cej"/>
                                         </constraints>
-                                        <state key="normal" title="3">
+                                        <state key="normal" title="entertainment">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="saveExpenseCategory" destination="noI-jk-Czn" eventType="touchUpInside" id="c0q-xj-Wzh"/>
+                                            <action selector="saveSelectedButton:" destination="noI-jk-Czn" eventType="touchUpInside" id="Jpt-ua-cVm"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YH6-B4-WsZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="30"/>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YH6-B4-WsZ">
+                                        <rect key="frame" x="0.0" y="160.00000000000003" width="353" height="30"/>
                                         <color key="backgroundColor" red="0.45332847409999999" green="0.53923641820000001" blue="0.65702370909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Jza-er-v4P"/>
                                         </constraints>
-                                        <state key="normal" title="4">
+                                        <state key="normal" title="food">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="saveExpenseCategory" destination="noI-jk-Czn" eventType="touchUpInside" id="DHx-1o-PS8"/>
+                                            <action selector="saveSelectedButton:" destination="noI-jk-Czn" eventType="touchUpInside" id="YGV-Sp-MeI"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -284,7 +283,7 @@
                                 </constraints>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="egl-qD-cVW">
-                                <rect key="frame" x="11" y="220.66666666666663" width="353" height="100"/>
+                                <rect key="frame" x="11" y="380.66666666666669" width="353" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="P3e-Hk-9Cs"/>
                                 </constraints>
@@ -301,12 +300,9 @@
                                 <state key="normal" title="Save Expense">
                                     <color key="titleColor" red="0.28696354769999999" green="0.33798416450000002" blue="0.41194122179999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
-                                <connections>
-                                    <action selector="selectTravelersButtonPressed:" destination="noI-jk-Czn" eventType="touchUpInside" id="PiM-dj-k94"/>
-                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DdQ-dk-MHk">
-                                <rect key="frame" x="11" y="366.66666666666674" width="353" height="374.33333333333326"/>
+                                <rect key="frame" x="11" y="526.66666666666663" width="353" height="214.33333333333337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TravelerSharingExpenseCell" rowHeight="74" id="Jy8-aB-QkL" customClass="TravelerSharingExpenseCell" customModule="Travexpense" customModuleProvider="target">
@@ -378,7 +374,7 @@
                         <outlet property="amountTextField" destination="HXf-xg-InX" id="pfx-oO-8Ru"/>
                         <outlet property="expenseCategoryButton" destination="iRM-dR-s69" id="2lA-p3-NBx"/>
                         <outlet property="expenseDescriptionField" destination="egl-qD-cVW" id="NIM-0Z-d8Q"/>
-                        <outlet property="saveExpenseButton" destination="FLf-rd-onY" id="UdH-gU-fb8"/>
+                        <outlet property="saveExpenseButton" destination="FLf-rd-onY" id="LTh-TS-Ivg"/>
                         <outlet property="tableToSelectTravelers" destination="DdQ-dk-MHk" id="MLB-WZ-Uih"/>
                         <outletCollection property="arrayOfExpenseCategoryButton" destination="IJN-vd-aqF" collectionClass="NSMutableArray" id="5Xa-AE-DIz"/>
                         <outletCollection property="arrayOfExpenseCategoryButton" destination="LBI-Sl-Jws" collectionClass="NSMutableArray" id="dGI-kx-2Is"/>
