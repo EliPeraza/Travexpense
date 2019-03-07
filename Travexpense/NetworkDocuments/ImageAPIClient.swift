@@ -13,9 +13,9 @@ final class ImagesClientAPI {
   
   static func searchImage(selectedCountryName: String, completionHandler: @escaping (AppError?, [ImageDetailedInfo]?) -> Void){
     
-    let city = selectedCityName.replacingOccurrences(of: " ", with: "+")
+    let city = selectedCountryName.replacingOccurrences(of: " ", with: "+")
     
-    let urlString = "https://pixabay.com/api/?key=\(Constants.imageAPIKey)&q=\(city)&image_type=photo"
+    let urlString = "https://pixabay.com/api/?key=\(SecretKeys.imageAPIKey)&q=\(city)&image_type=photo"
     
     NetworkHelper.shared.performDataTask(endpointURLString: urlString, httpMethod: "GET", httpBody: nil) { (appError, data, httpResponse) in
       
@@ -33,7 +33,7 @@ final class ImagesClientAPI {
           let imageData = try JSONDecoder().decode(ImageModel.self, from: data)
           completionHandler(nil, imageData.hits)
         } catch {
-          completionHandler(AppError.decodingError(error), nil)
+          completionHandler(AppError.jsonDecodingError(error), nil)
         }
       }
     }

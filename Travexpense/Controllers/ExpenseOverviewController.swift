@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 class ExpenseOverviewController: UIViewController {
   
@@ -15,9 +17,9 @@ class ExpenseOverviewController: UIViewController {
   
   @IBOutlet weak var placeImage: UIImageView!
   
-//  @IBOutlet weak var instuctionLabelOne: UILabel!
-//  
-//  @IBOutlet weak var instructionLabelTwo: UILabel!
+  //  @IBOutlet weak var instuctionLabelOne: UILabel!
+  //
+  //  @IBOutlet weak var instructionLabelTwo: UILabel!
   @IBOutlet weak var expenseCollectionView: UICollectionView!
   
   @IBOutlet weak var instructionLabelThree: UILabel!
@@ -35,6 +37,24 @@ class ExpenseOverviewController: UIViewController {
     }
   }
   
+  var imageData = [ImageDetailedInfo] () {
+    didSet {
+      DispatchQueue.main.async {
+        let image = Int.random(in: 0..<self.imageData.count)
+        ImageHelper.shared.fetchImage(urlString: self.imageData[image].largeImageURL) { (appError, image) in
+          if let appError = appError {
+            print(appError)
+          }
+          if let image = image {
+            DispatchQueue.main.async {
+              self.placeImage.image = image
+            }
+          }
+        }
+      }
+    }
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -44,27 +64,21 @@ class ExpenseOverviewController: UIViewController {
     travelerBalanceTableView.delegate = self
     travelerBalanceTableView.dataSource = self
     
-//    instuctionLabelOne.text = "Checkout the money stuff below!"
-//    instructionLabelTwo.text = """
-//    Click on a name to see a detailed balance with a friend.
-//    Green: people owe you money. Red: You owe them money
-//    """
+    //    instuctionLabelOne.text = "Checkout the money stuff below!"
+    //    instructionLabelTwo.text = """
+    //    Click on a name to see a detailed balance with a friend.
+    //    Green: people owe you money. Red: You owe them money
+    //    """
     instructionLabelThree.text = "Click below for a trip expense overview:"
+    placeName.text = "Peru"
     
-    DatabaseManager.firebaseBD.collection(DatabaseKeys.expenses).addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
-      if let error = error {
-        self.showAlert(title: "Network Error", message: error.localizedDescription)
-      } else if let snapShot = snapShot {
-        var expenses = [ExpenseModel]()
-        for document in snapShot.documents {
-         let expense = ExpenseModel(dictionaryFromFirebase: document.data())
-          print(document.data())
-          expenses.append(expense)
-        }
-        self.expensesDataFromDataBase = expenses
-        print("found \(expenses.count) expenses")
-      }
-    }
+    getDataFromFireBase()
+    
+//    let urlString = "https://pixabay.com/api/?key=\(SecretKeys.imageAPIKey)&q=peru&image_type=photo"
+//
+//    placeImage.kf.setImage(with: URL(string: urlString), placeholder: UIImage(named: "imageTest"))
+    
+    getRandomImage()
     
   }
   
@@ -83,7 +97,37 @@ class ExpenseOverviewController: UIViewController {
   }
   
   
+  private func getDataFromFireBase() {
+    DatabaseManager.firebaseBD.collection(DatabaseKeys.expenses).addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
+      if let error = error {
+        self.showAlert(title: "Network Error", message: error.localizedDescription)
+      } else if let snapShot = snapShot {
+        var expenses = [ExpenseModel]()
+        for document in snapShot.documents {
+          let expense = ExpenseModel(dictionaryFromFirebase: document.data())
+          print(document.data())
+          expenses.append(expense)
+        }
+        self.expensesDataFromDataBase = expenses
+        print("found \(expenses.count) expenses")
+      }
+    }
+  }
+  
+  private func getRandomImage() {
+    ImagesClientAPI.searchImage(selectedCountryName: "peru") { (appError, images) in
+      if let appError = appError {
+        print(appError)
+      }
+      if let data = images {
+        self.imageData = data
+        dump(self.imageData)
+      }
+    }
+  }
+  
 }
+
 
 extension ExpenseOverviewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   
@@ -94,24 +138,22 @@ extension ExpenseOverviewController: UICollectionViewDataSource, UICollectionVie
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
     guard let cell = expenseCollectionView.dequeueReusableCell(withReuseIdentifier: "TripExpenseOverviewCell", for: indexPath) as? TripExpenseOverviewCell else {return UICollectionViewCell()}
-    
-    cell.categoryName.text = expenseCategory[indexPath.row]
-    
-    switch expenseCategory[indexPath.row].lowercased(){
+
+    switch ExpenseType.allCases[indexPath.row].rawValue.lowercased(){
     case "transportation":
       cell.categoryImage.image = UIImage(named: "train")
     case "lodging":
       cell.categoryImage.image = UIImage(named: "lodging")
-      
+
     case "entertainment":
       cell.categoryImage.image = UIImage(named: "tickets")
-      
+
     case "food":
       cell.categoryImage.image = UIImage(named: "food")
-      
+
     default:
       cell.categoryImage.image = UIImage(named: "traveler")
-      
+
     }
     
     cell.layer.cornerRadius = 5.0
@@ -124,8 +166,8 @@ extension ExpenseOverviewController: UICollectionViewDataSource, UICollectionVie
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     
-//    return CGSize.init(width: 80, height: 80)
-    return CGSize(width: 90, height: 90)
+    //    return CGSize.init(width: 80, height: 80)
+    return CGSize(width: 80, height: 80)
   }
   
   
@@ -156,9 +198,8 @@ extension ExpenseOverviewController: UITableViewDataSource, UITableViewDelegate 
     let traverlerBalanceVC = TravelerBalanceController()
     let currentUserBeinSegue = travelerModel.travelerInfo[indexPath.row].title
     print("this is the current thing to segue: \(currentUserBeinSegue)")
-
+    
     traverlerBalanceVC.travelerSentFromOverview = currentUserBeinSegue
-
     navigationController?.pushViewController(traverlerBalanceVC, animated: true
     )
   }

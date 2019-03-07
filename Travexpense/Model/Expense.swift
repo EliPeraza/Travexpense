@@ -10,6 +10,8 @@ import Foundation
 
 
 struct ExpenseModel: Codable {
+  let userID: String
+//  let expenseID: String
   let expenseCategory: String
   let expenseDescription: String
   let expenseAmount: Double
@@ -17,7 +19,9 @@ struct ExpenseModel: Codable {
   
   
   // initializer to post in Firebase
-  init( expenseCategory: String, expenseDescription: String, expenseAmount: Double, travelersSharingExpense: [String:String]){
+  init( userID: String, /*expenseID: String*/ expenseCategory: String, expenseDescription: String, expenseAmount: Double, travelersSharingExpense: [String:String]){
+    self.userID = userID
+//    self.expenseID = expenseID
     self.expenseCategory = expenseCategory
     self.expenseDescription = expenseDescription
     self.expenseAmount = expenseAmount
@@ -26,6 +30,8 @@ struct ExpenseModel: Codable {
   
   //initializer to get data from firebase
   init(dictionaryFromFirebase: [String : Any]) {
+    self.userID = dictionaryFromFirebase["userID"] as? String ?? "didn't find user ID"
+//    self.expenseID = dictionaryFromFirebase["expenseID"] as? String ?? "didn't find an expense ID"
     self.expenseCategory = dictionaryFromFirebase["expenseCategory"] as? String ?? "didn't find a category expense"
     self.expenseDescription = dictionaryFromFirebase["expenseDescription"] as? String ?? "didn't find description for expense"
     self.expenseAmount = dictionaryFromFirebase["expenseAmount"] as? Double ?? 0.0

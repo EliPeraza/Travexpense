@@ -18,8 +18,6 @@ import UIKit
  
  What happens if user decides to change category - right now is disabled
  
- Add button to the bottom
- 
  
  */
  
@@ -33,6 +31,7 @@ class EnterExpenseController: UIViewController {
   var selectedTravelersToSplitExpense = [String]()
   var dictionaryOfTravelersSplittingExpense = [String:String]()
   
+  var userSession: UserSession!
   
   private var amountTextFieldPlaceholder = "$0"
   private var expenseDescriptionPlaceHolder = "Enter expense description. Example: 'Train to Paris'"
@@ -59,6 +58,8 @@ class EnterExpenseController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    userSession = (UIApplication.shared.delegate as! AppDelegate).usersession
+    
     expenseCategoryButton.setTitle("Select Expense Category", for: .normal)
     
     tableToSelectTravelers.allowsMultipleSelection = true
@@ -70,6 +71,7 @@ class EnterExpenseController: UIViewController {
     
     configureTextFields()
     configureExpenseCategoryButton()
+    setupButtonUI()
     
 //    amountTextField.addTarget(self, action: #selector(myTextFieldDidChange(_:)), for: .editingChanged)
     
@@ -77,17 +79,20 @@ class EnterExpenseController: UIViewController {
   
 //  @objc func myTextFieldDidChange(_ textField: UITextField) {
 //    expenseAmount = Double(textField.text ?? "nothing") ?? 0.0
+//print("This is the expense amount to be saved\(expenseAmount)")
 //
 //    if let amountString = textField.text{
-//
-////      textField.text = amountString.currencyInputFormatting()
-//      print("This is the xpense amount to be saved \(expenseAmount)")
+//      let x = amountString.currencyInputFormatting()
+//      textField.text = x
+//      let y = x.replacingOccurrences(of: "$", with: "")
+//      print("This is amount inside formatted string \(Double(y) ?? 0.0)")
 //    }
 //  }
   
   
   @IBAction func expenseCategoryButtonPressed(_ sender: UIButton) {
     expenseCategoryButtonAnimation()
+    
   }
   
   
@@ -139,6 +144,10 @@ class EnterExpenseController: UIViewController {
   
   @IBAction func saveExpenseCompleteEntryButtonPressed(_ sender: UIButton) {
     
+    guard let userID = userSession.getCurrentUser()?.uid else {
+      return
+    }
+    
     guard !expenseCategory.isEmpty else {
      showAlert(title: "Missing Information", message: "Select an expense category")
       return
@@ -163,7 +172,7 @@ class EnterExpenseController: UIViewController {
      return
     }
     
-    let expense = ExpenseModel.init(expenseCategory: expenseCategory, expenseDescription: expenseDescription, expenseAmount: amountToSave, travelersSharingExpense: dictionaryOfTravelersSplittingExpense)
+    let expense = ExpenseModel.init(userID: userID, expenseCategory: expenseCategory, expenseDescription: expenseDescription, expenseAmount: amountToSave, travelersSharingExpense: dictionaryOfTravelersSplittingExpense)
    
     DatabaseManager.postExpense(expense: expense)
     
@@ -201,7 +210,6 @@ class EnterExpenseController: UIViewController {
     }
   }
   
-  
   private func expenseCategoryButtonAnimation(){
     arrayOfExpenseCategoryButton.forEach { (button) in
       UIView.animate(withDuration: 0.3, animations: {
@@ -210,7 +218,19 @@ class EnterExpenseController: UIViewController {
       })
     }
   }
+  
+  private func setupButtonUI() {
+    arrayOfExpenseCategoryButton.forEach{ (button) in
+      buttonUISetup(button)
+    }
+    buttonUISetup(expenseCategoryButton)
+    buttonUISetup(saveSelectedTravelersButton)
+    buttonUISetup(saveExpenseEntry)
+  }
+  
 }
+
+
 
 extension EnterExpenseController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -301,36 +321,36 @@ extension EnterExpenseController: UITextFieldDelegate {
   }
 }
 
-//extension String {
-//
-//  /*Source: https://github.com/vivatum/Currency_Format_from_left_to_right/blob/master/TextFieldCurrencyFormat/ViewController.swift*/
-//
-//  func currencyInputFormatting() -> String {
-//
-//    var number: NSNumber!
-//    let formatter = NumberFormatter()
-//    formatter.numberStyle = .currency
-//    formatter.currencySymbol = "$"
-//    formatter.maximumFractionDigits = 2
-//    formatter.minimumFractionDigits = 2
-//
-//    var amountWithPrefix = self
-//
-//    // remove from String: "$", ".", ","
-//    let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
-//    amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
-//
-//    let double = (amountWithPrefix as NSString).doubleValue
-//    number = NSNumber(value: (double / 100))
-//
-//    // if first number is 0 or all numbers were deleted
-//    guard number != 0 as NSNumber else {
-//      return ""
-//    }
-//
-//    return formatter.string(from: number)!
-//  }
-//}
+extension String {
+
+  /*Source: https://github.com/vivatum/Currency_Format_from_left_to_right/blob/master/TextFieldCurrencyFormat/ViewController.swift*/
+
+  func currencyInputFormatting() -> String {
+
+    var number: NSNumber!
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .currency
+    formatter.currencySymbol = "$"
+    formatter.maximumFractionDigits = 2
+    formatter.minimumFractionDigits = 2
+
+    var amountWithPrefix = self
+
+    // remove from String: "$", ".", ","
+    let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
+    amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
+
+    let double = (amountWithPrefix as NSString).doubleValue
+    number = NSNumber(value: (double / 100))
+
+    // if first number is 0 or all numbers were deleted
+    guard number != 0 as NSNumber else {
+      return ""
+    }
+
+    return formatter.string(from: number)!
+  }
+}
 
 
 //  @IBAction func amountTextAction(_ sender: UITextField) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 struct CellExpansion {
   var opened: Bool
@@ -18,12 +19,15 @@ struct CellExpansion {
 class TravelerBalanceController: UIViewController {
 
   var travelerSentFromOverview = String()
+  var imageForBackGround: UIImage?
 
   var tableViewData = [CellExpansion]()
   
+  
+  @IBOutlet weak var backgroundImageButton: UIButton!
+  
   @IBOutlet weak var currentUserImage: UIImageView!
   @IBOutlet weak var currentUserName: UILabel!
-  
   
   
   @IBOutlet weak var userWhoseBalaceIsComparedImage: UIImageView!
@@ -35,6 +39,7 @@ class TravelerBalanceController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    
       
       tableView.dataSource = self
       tableView.delegate = self

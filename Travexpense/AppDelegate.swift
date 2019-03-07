@@ -13,13 +13,36 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-
+  var usersession: UserSession!
+  var storageManager: StorageManager!
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     
     FirebaseApp.configure()
+    usersession = UserSession()
+    storageManager = StorageManager()
     
+    // initialize and set the windows's frame
+    window = UIWindow(frame: UIScreen.main.bounds)
+    
+    
+    // if user is logged in present the tab bar controller
+    if let _ = usersession.getCurrentUser() {
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let raceReviewsTabController = storyboard.instantiateViewController(withIdentifier: "MainNavigationController")
+      window?.rootViewController = raceReviewsTabController
+    }
+      
+      // if there isn't a logged user, show the login view controller
+    else {
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginControllerStoryboard") as! LoginController
+      window?.rootViewController = loginViewController
+    }
+    
+    // present the window
+    window?.makeKeyAndVisible()
     return true
   }
 
