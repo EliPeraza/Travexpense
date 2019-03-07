@@ -8,6 +8,22 @@
 
 import UIKit
 
+/*TODO:
+ Handle the amount textfield formatting - if I apply the code found online I can't convert to Double to save to Firebase
+ 
+ 
+ Can I add an enter to a numeric keyboard
+ Or if I tap anywhereelse dismiss keyboard
+ 
+ 
+ What happens if user decides to change category - right now is disabled
+ 
+ Add button to the bottom
+ 
+ 
+ */
+ 
+
 class EnterExpenseController: UIViewController {
   
   //Var to save object to Firebase
@@ -18,7 +34,7 @@ class EnterExpenseController: UIViewController {
   var dictionaryOfTravelersSplittingExpense = [String:String]()
   
   
-  private var amountTextFieldPlaceholder = "Enter total amount for the expense"
+  private var amountTextFieldPlaceholder = "$0"
   private var expenseDescriptionPlaceHolder = "Enter expense description. Example: 'Train to Paris'"
   
   var travelerModel = TravelerModel()
@@ -137,7 +153,7 @@ class EnterExpenseController: UIViewController {
     }
     
     guard !dictionaryOfTravelersSplittingExpense.isEmpty else {
-     showAlert(title: "Select Travelers", message: "Select and add travelers you are sharing the expense with")
+     showAlert(title: "Select Travelers", message: "Select and ADD travelers you are sharing the expense with")
       return
     }
     
@@ -149,8 +165,9 @@ class EnterExpenseController: UIViewController {
     
     let expense = ExpenseModel.init(expenseCategory: expenseCategory, expenseDescription: expenseDescription, expenseAmount: amountToSave, travelersSharingExpense: dictionaryOfTravelersSplittingExpense)
    
+    DatabaseManager.postExpense(expense: expense)
     
-    print("This is an expense\(expense)")
+    showAlert(title: "Saved", message: "Awesome! This will be reflected in the balance for all selected travelers")
     
   }
   
@@ -271,13 +288,14 @@ extension EnterExpenseController: UITextFieldDelegate {
     }
   }
   
+  
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     if textField == amountTextField {
       expenseDescriptionField.becomeFirstResponder()
     }
     
     if textField == expenseDescriptionField {
-      self.view.endEditing(true)
+      expenseDescriptionField.resignFirstResponder()
     }
     return true
   }

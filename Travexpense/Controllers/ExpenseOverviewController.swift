@@ -15,9 +15,9 @@ class ExpenseOverviewController: UIViewController {
   
   @IBOutlet weak var placeImage: UIImageView!
   
-  @IBOutlet weak var instuctionLabelOne: UILabel!
-  
-  @IBOutlet weak var instructionLabelTwo: UILabel!
+//  @IBOutlet weak var instuctionLabelOne: UILabel!
+//  
+//  @IBOutlet weak var instructionLabelTwo: UILabel!
   @IBOutlet weak var expenseCollectionView: UICollectionView!
   
   @IBOutlet weak var instructionLabelThree: UILabel!
@@ -26,6 +26,14 @@ class ExpenseOverviewController: UIViewController {
   
   let travelerModel = TravelerModel()
   let expenseCategory = ["Transportation", "Lodging", "Entertainment", "Food"]
+  
+  var expensesDataFromDataBase = [ExpenseModel]() {
+    didSet {
+      DispatchQueue.main.async {
+        
+      }
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -36,12 +44,27 @@ class ExpenseOverviewController: UIViewController {
     travelerBalanceTableView.delegate = self
     travelerBalanceTableView.dataSource = self
     
-    instuctionLabelOne.text = "Checkout the money stuff below!"
-    instructionLabelTwo.text = """
-    Click on a name to see a detailed balance with a friend.
-    Green: people owe you money. Red: You owe them money
-    """
+//    instuctionLabelOne.text = "Checkout the money stuff below!"
+//    instructionLabelTwo.text = """
+//    Click on a name to see a detailed balance with a friend.
+//    Green: people owe you money. Red: You owe them money
+//    """
     instructionLabelThree.text = "Click below for a trip expense overview:"
+    
+    DatabaseManager.firebaseBD.collection(DatabaseKeys.expenses).addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
+      if let error = error {
+        self.showAlert(title: "Network Error", message: error.localizedDescription)
+      } else if let snapShot = snapShot {
+        var expenses = [ExpenseModel]()
+        for document in snapShot.documents {
+         let expense = ExpenseModel(dictionaryFromFirebase: document.data())
+          print(document.data())
+          expenses.append(expense)
+        }
+        self.expensesDataFromDataBase = expenses
+        print("found \(expenses.count) expenses")
+      }
+    }
     
   }
   

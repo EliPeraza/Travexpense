@@ -26,6 +26,11 @@
 		1E047EF2222A0D480077896C /* TravelerSharingExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047EF1222A0D480077896C /* TravelerSharingExpenseCell.swift */; };
 		1E047EF4222A0FA70077896C /* Traveler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047EF3222A0FA70077896C /* Traveler.swift */; };
 		1E602F63222B306F0018E248 /* TripExpenseOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E602F62222B306F0018E248 /* TripExpenseOverviewCell.swift */; };
+		1EC263CA2230BFFB00BF1959 /* LogicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263C92230BFFB00BF1959 /* LogicModel.swift */; };
+		1EC263CC2230D05700BF1959 /* ImageAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263CB2230D05700BF1959 /* ImageAPIClient.swift */; };
+		1EC263CF2230D0FA00BF1959 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263CE2230D0FA00BF1959 /* AppError.swift */; };
+		1EC263D12230D11F00BF1959 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263D02230D11F00BF1959 /* ImageModel.swift */; };
+		1EC263D32230D15300BF1959 /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263D22230D15300BF1959 /* SecretKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +54,11 @@
 		1E047EF1222A0D480077896C /* TravelerSharingExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerSharingExpenseCell.swift; sourceTree = "<group>"; };
 		1E047EF3222A0FA70077896C /* Traveler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traveler.swift; sourceTree = "<group>"; };
 		1E602F62222B306F0018E248 /* TripExpenseOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripExpenseOverviewCell.swift; sourceTree = "<group>"; };
+		1EC263C92230BFFB00BF1959 /* LogicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicModel.swift; sourceTree = "<group>"; };
+		1EC263CB2230D05700BF1959 /* ImageAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPIClient.swift; sourceTree = "<group>"; };
+		1EC263CE2230D0FA00BF1959 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		1EC263D02230D11F00BF1959 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		1EC263D22230D15300BF1959 /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		3C69E43791D69DB91630F349 /* Pods-Travexpense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travexpense.release.xcconfig"; path = "Target Support Files/Pods-Travexpense/Pods-Travexpense.release.xcconfig"; sourceTree = "<group>"; };
 		50B78BAFE3B2B99AD41CDFF1 /* Pods-Travexpense.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travexpense.debug.xcconfig"; path = "Target Support Files/Pods-Travexpense/Pods-Travexpense.debug.xcconfig"; sourceTree = "<group>"; };
 		897A6009B002E92D7CD330D6 /* Pods_Travexpense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travexpense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +102,8 @@
 				1E047EB822276E1E0077896C /* DatabaseHelpers */,
 				1E047EB922276E300077896C /* Controllers */,
 				1E047EBC22276EE90077896C /* Extensions */,
+				1EC263CD2230D06400BF1959 /* NetworkDocuments */,
+				1EC263D42230D16200BF1959 /* SecretKeys */,
 				1E047E9D222762540077896C /* Main.storyboard */,
 				1E047EA0222762570077896C /* Assets.xcassets */,
 				1E047EA2222762570077896C /* LaunchScreen.storyboard */,
@@ -107,6 +119,8 @@
 				1E047EB122276D790077896C /* Expense.swift */,
 				1E047EB322276D940077896C /* ExpenseEnum.swift */,
 				1E047EF3222A0FA70077896C /* Traveler.swift */,
+				1EC263C92230BFFB00BF1959 /* LogicModel.swift */,
+				1EC263D02230D11F00BF1959 /* ImageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -148,6 +162,23 @@
 				1E602F62222B306F0018E248 /* TripExpenseOverviewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		1EC263CD2230D06400BF1959 /* NetworkDocuments */ = {
+			isa = PBXGroup;
+			children = (
+				1EC263CB2230D05700BF1959 /* ImageAPIClient.swift */,
+				1EC263CE2230D0FA00BF1959 /* AppError.swift */,
+			);
+			path = NetworkDocuments;
+			sourceTree = "<group>";
+		};
+		1EC263D42230D16200BF1959 /* SecretKeys */ = {
+			isa = PBXGroup;
+			children = (
+				1EC263D22230D15300BF1959 /* SecretKeys.swift */,
+			);
+			path = SecretKeys;
 			sourceTree = "<group>";
 		};
 		29F2C6BF88E906F389877B6A /* Pods */ = {
@@ -308,12 +339,17 @@
 				1E047EB622276DAB0077896C /* DatabaseKeys.swift in Sources */,
 				1E047EC8222854B60077896C /* TravelersCell.swift in Sources */,
 				1E047EBE22283A600077896C /* EnterExpenseController.swift in Sources */,
+				1EC263CF2230D0FA00BF1959 /* AppError.swift in Sources */,
 				1E602F63222B306F0018E248 /* TripExpenseOverviewCell.swift in Sources */,
 				1E047EF2222A0D480077896C /* TravelerSharingExpenseCell.swift in Sources */,
 				1E047EB422276D940077896C /* ExpenseEnum.swift in Sources */,
+				1EC263D32230D15300BF1959 /* SecretKeys.swift in Sources */,
 				1E047EB222276D790077896C /* Expense.swift in Sources */,
 				1E047E9C222762540077896C /* ExpenseOverviewController.swift in Sources */,
 				1E047EAC2227669E0077896C /* DatabaseManager.swift in Sources */,
+				1EC263CA2230BFFB00BF1959 /* LogicModel.swift in Sources */,
+				1EC263CC2230D05700BF1959 /* ImageAPIClient.swift in Sources */,
+				1EC263D12230D11F00BF1959 /* ImageModel.swift in Sources */,
 				1E047EBB22276ECC0077896C /* UIViewController+Alerts.swift in Sources */,
 				1E047E9A222762540077896C /* AppDelegate.swift in Sources */,
 				1E047EF4222A0FA70077896C /* Traveler.swift in Sources */,
