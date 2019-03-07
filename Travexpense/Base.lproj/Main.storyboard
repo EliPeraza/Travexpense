@@ -188,13 +188,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HXf-xg-InX">
-                                <rect key="frame" x="11" y="339.66666666666669" width="353" height="30"/>
+                                <rect key="frame" x="11" y="339.66666666666669" width="353" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7Dj-vj-Pf6"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select travelers to split this:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlx-Zj-jZP">
-                                <rect key="frame" x="11" y="491.66666666666669" width="353" height="24.000000000000057"/>
+                                <rect key="frame" x="11" y="461.66666666666669" width="302" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.28696354769999999" green="0.33798416450000002" blue="0.41194122179999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -283,9 +286,9 @@
                                 </constraints>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="egl-qD-cVW">
-                                <rect key="frame" x="11" y="380.66666666666669" width="353" height="100"/>
+                                <rect key="frame" x="11" y="390.66666666666669" width="353" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="P3e-Hk-9Cs"/>
+                                    <constraint firstAttribute="height" constant="60" id="P3e-Hk-9Cs"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -300,9 +303,12 @@
                                 <state key="normal" title="Save Expense">
                                     <color key="titleColor" red="0.28696354769999999" green="0.33798416450000002" blue="0.41194122179999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveExpenseCompleteEntryButtonPressed:" destination="noI-jk-Czn" eventType="touchUpInside" id="COV-4X-24g"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DdQ-dk-MHk">
-                                <rect key="frame" x="11" y="526.66666666666663" width="353" height="214.33333333333337"/>
+                                <rect key="frame" x="11" y="512.66666666666663" width="353" height="228.33333333333337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TravelerSharingExpenseCell" rowHeight="74" id="Jy8-aB-QkL" customClass="TravelerSharingExpenseCell" customModule="Travexpense" customModuleProvider="target">
@@ -342,30 +348,44 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0i-7D-g2m">
+                                <rect key="frame" x="324" y="461.66666666666669" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="gDz-JB-Ni1"/>
+                                    <constraint firstAttribute="width" constant="40" id="hNg-NC-c8a"/>
+                                </constraints>
+                                <state key="normal" image="add"/>
+                                <connections>
+                                    <action selector="selectTravelersButtonPressed:" destination="noI-jk-Czn" eventType="touchUpInside" id="JZv-86-nCq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="eEa-9w-gcG" firstAttribute="trailing" secondItem="DdQ-dk-MHk" secondAttribute="trailing" constant="11" id="06e-ML-3Jc"/>
-                            <constraint firstItem="zlx-Zj-jZP" firstAttribute="leading" secondItem="eEa-9w-gcG" secondAttribute="leading" constant="11" id="0Tv-bP-k74"/>
+                            <constraint firstItem="eEa-9w-gcG" firstAttribute="trailing" secondItem="l0i-7D-g2m" secondAttribute="trailing" constant="11" id="2qw-L3-3iU"/>
                             <constraint firstItem="HXf-xg-InX" firstAttribute="leading" secondItem="eEa-9w-gcG" secondAttribute="leading" constant="11" id="Aqj-ER-QQM"/>
                             <constraint firstItem="eEa-9w-gcG" firstAttribute="trailing" secondItem="FLf-rd-onY" secondAttribute="trailing" constant="40" id="BHO-K2-g3C"/>
                             <constraint firstItem="HXf-xg-InX" firstAttribute="top" secondItem="QGh-vs-n3E" secondAttribute="bottom" constant="11" id="C2w-Oe-bkz"/>
+                            <constraint firstItem="zlx-Zj-jZP" firstAttribute="top" secondItem="egl-qD-cVW" secondAttribute="bottom" constant="11" id="DjK-le-7Go"/>
+                            <constraint firstItem="zlx-Zj-jZP" firstAttribute="leading" secondItem="eEa-9w-gcG" secondAttribute="leading" constant="11" id="GgK-ru-q2n"/>
                             <constraint firstItem="egl-qD-cVW" firstAttribute="leading" secondItem="eEa-9w-gcG" secondAttribute="leading" constant="11" id="IFB-Wa-qHn"/>
                             <constraint firstItem="ZVQ-w9-xSQ" firstAttribute="top" secondItem="eEa-9w-gcG" secondAttribute="top" constant="11" id="IcZ-JH-tDG"/>
                             <constraint firstItem="DdQ-dk-MHk" firstAttribute="leading" secondItem="eEa-9w-gcG" secondAttribute="leading" constant="11" id="MN7-ak-2Tp"/>
+                            <constraint firstItem="l0i-7D-g2m" firstAttribute="top" secondItem="egl-qD-cVW" secondAttribute="bottom" constant="11" id="MQU-cL-SHy"/>
+                            <constraint firstItem="l0i-7D-g2m" firstAttribute="leading" secondItem="zlx-Zj-jZP" secondAttribute="trailing" constant="11" id="Meu-h4-5fI"/>
                             <constraint firstItem="FLf-rd-onY" firstAttribute="bottom" secondItem="eEa-9w-gcG" secondAttribute="bottom" constant="11" id="Q3c-gM-OVn"/>
+                            <constraint firstItem="DdQ-dk-MHk" firstAttribute="top" secondItem="zlx-Zj-jZP" secondAttribute="bottom" constant="11" id="Svx-hd-PM2"/>
                             <constraint firstItem="ZVQ-w9-xSQ" firstAttribute="leading" secondItem="eEa-9w-gcG" secondAttribute="leading" constant="11" id="TVb-Dt-dkC"/>
+                            <constraint firstItem="DdQ-dk-MHk" firstAttribute="top" secondItem="l0i-7D-g2m" secondAttribute="bottom" constant="11" id="TXM-lf-dAo"/>
                             <constraint firstItem="QGh-vs-n3E" firstAttribute="top" secondItem="ZVQ-w9-xSQ" secondAttribute="bottom" constant="11" id="VWJ-kb-JaM"/>
                             <constraint firstItem="FLf-rd-onY" firstAttribute="top" secondItem="DdQ-dk-MHk" secondAttribute="bottom" constant="8" id="WCj-9k-e80"/>
                             <constraint firstItem="eEa-9w-gcG" firstAttribute="trailing" secondItem="HXf-xg-InX" secondAttribute="trailing" constant="11" id="WjX-6P-GBh"/>
                             <constraint firstItem="egl-qD-cVW" firstAttribute="top" secondItem="HXf-xg-InX" secondAttribute="bottom" constant="11" id="Ybe-h6-0xJ"/>
-                            <constraint firstItem="DdQ-dk-MHk" firstAttribute="top" secondItem="zlx-Zj-jZP" secondAttribute="bottom" constant="11" id="ZBC-Ia-mjH"/>
                             <constraint firstItem="eEa-9w-gcG" firstAttribute="trailing" secondItem="QGh-vs-n3E" secondAttribute="trailing" constant="11" id="c4E-jn-Kbb"/>
                             <constraint firstItem="FLf-rd-onY" firstAttribute="leading" secondItem="eEa-9w-gcG" secondAttribute="leading" constant="40" id="d4d-rf-aBi"/>
-                            <constraint firstItem="eEa-9w-gcG" firstAttribute="trailing" secondItem="zlx-Zj-jZP" secondAttribute="trailing" constant="11" id="jQo-lr-FCf"/>
                             <constraint firstItem="eEa-9w-gcG" firstAttribute="trailing" secondItem="egl-qD-cVW" secondAttribute="trailing" constant="11" id="vEr-Ns-5SQ"/>
                             <constraint firstItem="eEa-9w-gcG" firstAttribute="trailing" secondItem="ZVQ-w9-xSQ" secondAttribute="trailing" constant="11" id="vOG-hD-IsJ"/>
-                            <constraint firstItem="zlx-Zj-jZP" firstAttribute="top" secondItem="egl-qD-cVW" secondAttribute="bottom" constant="11" id="wx1-JQ-Fpl"/>
                             <constraint firstItem="QGh-vs-n3E" firstAttribute="leading" secondItem="eEa-9w-gcG" secondAttribute="leading" constant="11" id="y7t-KJ-6Ny"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eEa-9w-gcG"/>
@@ -374,7 +394,8 @@
                         <outlet property="amountTextField" destination="HXf-xg-InX" id="pfx-oO-8Ru"/>
                         <outlet property="expenseCategoryButton" destination="iRM-dR-s69" id="2lA-p3-NBx"/>
                         <outlet property="expenseDescriptionField" destination="egl-qD-cVW" id="NIM-0Z-d8Q"/>
-                        <outlet property="saveExpenseButton" destination="FLf-rd-onY" id="LTh-TS-Ivg"/>
+                        <outlet property="saveExpenseEntry" destination="FLf-rd-onY" id="f1g-4b-r7Y"/>
+                        <outlet property="saveSelectedTravelersButton" destination="l0i-7D-g2m" id="Rhe-2j-itz"/>
                         <outlet property="tableToSelectTravelers" destination="DdQ-dk-MHk" id="MLB-WZ-Uih"/>
                         <outletCollection property="arrayOfExpenseCategoryButton" destination="IJN-vd-aqF" collectionClass="NSMutableArray" id="5Xa-AE-DIz"/>
                         <outletCollection property="arrayOfExpenseCategoryButton" destination="LBI-Sl-Jws" collectionClass="NSMutableArray" id="dGI-kx-2Is"/>
@@ -577,6 +598,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="50" height="50"/>
         <image name="arrows" width="50" height="50"/>
         <image name="imageTest" width="3264" height="2448"/>
         <image name="traveler" width="100" height="100"/>
