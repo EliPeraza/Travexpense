@@ -22,7 +22,7 @@ final class DatabaseManager {
 
   static func postExpense(expense: ExpenseModel) {
     var ref: DocumentReference? = nil
-    ref = firebaseBD.collection("expenses").addDocument(data: ["expenseCategory" : expense.expenseCategory, "expenseSubCategory": expense.expenseSubcategory, "expenseDescription" : expense.expenseDescription, "expenseAmount" : expense.expenseAmount, "travelersSharingExpense" : expense.travelersSharingExpense], completion: {(error) in
+    ref = firebaseBD.collection("expenses").addDocument(data: ["expenseCategory" : expense.expenseCategory, "expenseDescription" : expense.expenseDescription, "expenseAmount" : expense.expenseAmount, "travelersSharingExpense" : expense.travelersSharingExpense], completion: {(error) in
       if let error = error {
         print("could not post expense. Error: \(error)")                                  } else {
         print("expense saved at ref: \(ref?.documentID ?? "no doc id")")                                  }

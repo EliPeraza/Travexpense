@@ -14,8 +14,8 @@ class EnterExpenseController: UIViewController {
   var expenseCategory = String()
   var expenseDescription =  String()
   var expenseAmount = Double()
-  var travelersToShareExpense = [String]()
-  var dictionaryOfTravelers = [String:String]()
+  var selectedTravelersToSplitExpense = [String]()
+  var dictionaryOfTravelersSplittingExpense = [String:String]()
   
   
   private var amountTextFieldPlaceholder = "Enter total amount for the expense"
@@ -55,19 +55,19 @@ class EnterExpenseController: UIViewController {
     configureTextFields()
     configureExpenseCategoryButton()
     
-    amountTextField.addTarget(self, action: #selector(myTextFieldDidChange(_:)), for: .editingChanged)
+//    amountTextField.addTarget(self, action: #selector(myTextFieldDidChange(_:)), for: .editingChanged)
     
   }
   
-  @objc func myTextFieldDidChange(_ textField: UITextField) {
-    expenseAmount = Double(textField.text ?? "nothing") ?? 0.0
-    
-    if let amountString = textField.text{
-      
-      textField.text = amountString.currencyInputFormatting()
-      print("This is the xpense amount to be saved \(expenseAmount)")
-    }
-  }
+//  @objc func myTextFieldDidChange(_ textField: UITextField) {
+//    expenseAmount = Double(textField.text ?? "nothing") ?? 0.0
+//
+//    if let amountString = textField.text{
+//
+////      textField.text = amountString.currencyInputFormatting()
+//      print("This is the xpense amount to be saved \(expenseAmount)")
+//    }
+//  }
   
   
   @IBAction func expenseCategoryButtonPressed(_ sender: UIButton) {
@@ -94,17 +94,17 @@ class EnterExpenseController: UIViewController {
   
   @IBAction func selectTravelersButtonPressed(_ sender: UIButton) {
     
-    travelersToShareExpense = travelerModel.selectedItems.map{$0.title}
+    selectedTravelersToSplitExpense = travelerModel.selectedItems.map{$0.title}
     
-    let displayNames = travelersToShareExpense.joined(separator: ", ")
+    let displayNames = selectedTravelersToSplitExpense.joined(separator: ", ")
     
     showAlert(title: "Split this expense among:", message: displayNames) { (alert) in
       let ok = UIAlertAction(title: "Ok", style: .default) { (done) in
         
         
-        for person in self.travelersToShareExpense {
-          self.dictionaryOfTravelers[person] = person
-          print(self.dictionaryOfTravelers)
+        for person in self.selectedTravelersToSplitExpense {
+          self.dictionaryOfTravelersSplittingExpense[person] = person
+          print(self.dictionaryOfTravelersSplittingExpense)
         }
 
         }
@@ -115,7 +115,7 @@ class EnterExpenseController: UIViewController {
       self.present(alert, animated: true, completion: nil)
     }
     
-    print("travelers sharing expense: \(travelersToShareExpense)")
+    print("travelers sharing expense: \(selectedTravelersToSplitExpense)")
     
     
   }
@@ -123,20 +123,32 @@ class EnterExpenseController: UIViewController {
   
   @IBAction func saveExpenseCompleteEntryButtonPressed(_ sender: UIButton) {
     
+    guard !expenseCategory.isEmpty else {
+     showAlert(title: "Missing Information", message: "Select an expense category")
+      return
+    }
     
     guard let expenseDescription = expenseDescriptionField.text,
-      !expenseDescription.isEmpty else {
+      !expenseDescription.isEmpty,
+    expenseDescription != expenseDescriptionPlaceHolder
+    else {
         showAlert(title: "Missing Description", message: "Please enter more info")
         return
     }
     
-    guard !travelersToShareExpense.isEmpty else {
+    guard !dictionaryOfTravelersSplittingExpense.isEmpty else {
      showAlert(title: "Select Travelers", message: "Select and add travelers you are sharing the expense with")
       return
     }
     
+    let amount = amountTextField.text ?? "0.0"
+    guard let amountToSave = Double(amount)  else {
+      showAlert(title: "Missing amount", message: "Please enter the total amount to be split evenly between travelers")
+     return
+    }
     
-    let expense = ExpenseModel.init(expenseCategory: expenseCategory, expenseSubcategory: "nothing-refactor", expenseDescription: expenseDescription, expenseAmount: expenseAmount, travelersSharingExpense: ["Ess" : "Oli"])
+    let expense = ExpenseModel.init(expenseCategory: expenseCategory, expenseDescription: expenseDescription, expenseAmount: amountToSave, travelersSharingExpense: dictionaryOfTravelersSplittingExpense)
+   
     
     print("This is an expense\(expense)")
     
@@ -271,36 +283,36 @@ extension EnterExpenseController: UITextFieldDelegate {
   }
 }
 
-extension String {
-  
-  /*Source: https://github.com/vivatum/Currency_Format_from_left_to_right/blob/master/TextFieldCurrencyFormat/ViewController.swift*/
-  
-  func currencyInputFormatting() -> String {
-    
-    var number: NSNumber!
-    let formatter = NumberFormatter()
-    formatter.numberStyle = .currency
-    formatter.currencySymbol = "$"
-    formatter.maximumFractionDigits = 2
-    formatter.minimumFractionDigits = 2
-    
-    var amountWithPrefix = self
-    
-    // remove from String: "$", ".", ","
-    let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
-    amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
-    
-    let double = (amountWithPrefix as NSString).doubleValue
-    number = NSNumber(value: (double / 100))
-    
-    // if first number is 0 or all numbers were deleted
-    guard number != 0 as NSNumber else {
-      return ""
-    }
-    
-    return formatter.string(from: number)!
-  }
-}
+//extension String {
+//
+//  /*Source: https://github.com/vivatum/Currency_Format_from_left_to_right/blob/master/TextFieldCurrencyFormat/ViewController.swift*/
+//
+//  func currencyInputFormatting() -> String {
+//
+//    var number: NSNumber!
+//    let formatter = NumberFormatter()
+//    formatter.numberStyle = .currency
+//    formatter.currencySymbol = "$"
+//    formatter.maximumFractionDigits = 2
+//    formatter.minimumFractionDigits = 2
+//
+//    var amountWithPrefix = self
+//
+//    // remove from String: "$", ".", ","
+//    let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
+//    amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
+//
+//    let double = (amountWithPrefix as NSString).doubleValue
+//    number = NSNumber(value: (double / 100))
+//
+//    // if first number is 0 or all numbers were deleted
+//    guard number != 0 as NSNumber else {
+//      return ""
+//    }
+//
+//    return formatter.string(from: number)!
+//  }
+//}
 
 
 //  @IBAction func amountTextAction(_ sender: UITextField) {
