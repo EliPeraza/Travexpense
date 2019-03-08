@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/elizabethperaza/Desktop/Travexpense/Travexpense/NetworkDocuments/ImageHelper.swift">
+   </FileRef>
+   <FileRef
       location = "group:Travexpense.xcodeproj">
    </FileRef>
    <FileRef

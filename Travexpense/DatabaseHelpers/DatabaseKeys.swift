@@ -10,4 +10,6 @@ import Foundation
 
 struct DatabaseKeys {
   static let expenses = "expenses"
+  static let UsersCollectionKey = "users"
+
 }

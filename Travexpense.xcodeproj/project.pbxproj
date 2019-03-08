@@ -26,6 +26,21 @@
 		1E047EF2222A0D480077896C /* TravelerSharingExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047EF1222A0D480077896C /* TravelerSharingExpenseCell.swift */; };
 		1E047EF4222A0FA70077896C /* Traveler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E047EF3222A0FA70077896C /* Traveler.swift */; };
 		1E602F63222B306F0018E248 /* TripExpenseOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E602F62222B306F0018E248 /* TripExpenseOverviewCell.swift */; };
+		1EC263CA2230BFFB00BF1959 /* LogicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263C92230BFFB00BF1959 /* LogicModel.swift */; };
+		1EC263CC2230D05700BF1959 /* ImageAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263CB2230D05700BF1959 /* ImageAPIClient.swift */; };
+		1EC263CF2230D0FA00BF1959 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263CE2230D0FA00BF1959 /* AppError.swift */; };
+		1EC263D12230D11F00BF1959 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263D02230D11F00BF1959 /* ImageModel.swift */; };
+		1EC263D32230D15300BF1959 /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263D22230D15300BF1959 /* SecretKeys.swift */; };
+		1EC263D62230D66A00BF1959 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263D52230D66A00BF1959 /* NetworkHelper.swift */; };
+		1EC263D82230D70700BF1959 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263D72230D70700BF1959 /* ImageHelper.swift */; };
+		1EC263DC2230E31900BF1959 /* Extension+UISetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263DB2230E31900BF1959 /* Extension+UISetup.swift */; };
+		1EC263DE2231923800BF1959 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263DD2231923800BF1959 /* UserSession.swift */; };
+		1EC263E02231924900BF1959 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263DF2231924900BF1959 /* StorageManager.swift */; };
+		1EC263E22231925400BF1959 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263E12231925400BF1959 /* StorageKeys.swift */; };
+		1EC263E42231929A00BF1959 /* TEUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263E32231929A00BF1959 /* TEUser.swift */; };
+		1EC263E62231A3EC00BF1959 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EC263E52231A3EC00BF1959 /* LoginView.xib */; };
+		1EC263E92231A5D700BF1959 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263E82231A5D700BF1959 /* LoginView.swift */; };
+		1EC263EB2231B93B00BF1959 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263EA2231B93B00BF1959 /* LoginController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +64,21 @@
 		1E047EF1222A0D480077896C /* TravelerSharingExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerSharingExpenseCell.swift; sourceTree = "<group>"; };
 		1E047EF3222A0FA70077896C /* Traveler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traveler.swift; sourceTree = "<group>"; };
 		1E602F62222B306F0018E248 /* TripExpenseOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripExpenseOverviewCell.swift; sourceTree = "<group>"; };
+		1EC263C92230BFFB00BF1959 /* LogicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicModel.swift; sourceTree = "<group>"; };
+		1EC263CB2230D05700BF1959 /* ImageAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPIClient.swift; sourceTree = "<group>"; };
+		1EC263CE2230D0FA00BF1959 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		1EC263D02230D11F00BF1959 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		1EC263D22230D15300BF1959 /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
+		1EC263D52230D66A00BF1959 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkHelper.swift; path = Travexpense/NetworkDocuments/NetworkHelper.swift; sourceTree = SOURCE_ROOT; };
+		1EC263D72230D70700BF1959 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageHelper.swift; path = /Users/elizabethperaza/Desktop/Travexpense/Travexpense/NetworkDocuments/ImageHelper.swift; sourceTree = "<absolute>"; };
+		1EC263DB2230E31900BF1959 /* Extension+UISetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UISetup.swift"; sourceTree = "<group>"; };
+		1EC263DD2231923800BF1959 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		1EC263DF2231924900BF1959 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		1EC263E12231925400BF1959 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
+		1EC263E32231929A00BF1959 /* TEUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEUser.swift; sourceTree = "<group>"; };
+		1EC263E52231A3EC00BF1959 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		1EC263E82231A5D700BF1959 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1EC263EA2231B93B00BF1959 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		3C69E43791D69DB91630F349 /* Pods-Travexpense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travexpense.release.xcconfig"; path = "Target Support Files/Pods-Travexpense/Pods-Travexpense.release.xcconfig"; sourceTree = "<group>"; };
 		50B78BAFE3B2B99AD41CDFF1 /* Pods-Travexpense.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travexpense.debug.xcconfig"; path = "Target Support Files/Pods-Travexpense/Pods-Travexpense.debug.xcconfig"; sourceTree = "<group>"; };
 		897A6009B002E92D7CD330D6 /* Pods_Travexpense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travexpense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +122,8 @@
 				1E047EB822276E1E0077896C /* DatabaseHelpers */,
 				1E047EB922276E300077896C /* Controllers */,
 				1E047EBC22276EE90077896C /* Extensions */,
+				1EC263CD2230D06400BF1959 /* NetworkDocuments */,
+				1EC263D42230D16200BF1959 /* SecretKeys */,
 				1E047E9D222762540077896C /* Main.storyboard */,
 				1E047EA0222762570077896C /* Assets.xcassets */,
 				1E047EA2222762570077896C /* LaunchScreen.storyboard */,
@@ -107,6 +139,9 @@
 				1E047EB122276D790077896C /* Expense.swift */,
 				1E047EB322276D940077896C /* ExpenseEnum.swift */,
 				1E047EF3222A0FA70077896C /* Traveler.swift */,
+				1EC263C92230BFFB00BF1959 /* LogicModel.swift */,
+				1EC263D02230D11F00BF1959 /* ImageModel.swift */,
+				1EC263E32231929A00BF1959 /* TEUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -116,6 +151,9 @@
 			children = (
 				1E047EB522276DAB0077896C /* DatabaseKeys.swift */,
 				1E047EAB2227669E0077896C /* DatabaseManager.swift */,
+				1EC263DD2231923800BF1959 /* UserSession.swift */,
+				1EC263DF2231924900BF1959 /* StorageManager.swift */,
+				1EC263E12231925400BF1959 /* StorageKeys.swift */,
 			);
 			path = DatabaseHelpers;
 			sourceTree = "<group>";
@@ -123,10 +161,12 @@
 		1E047EB922276E300077896C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1E047EC9222869CC0077896C /* TravelerBalanceController.swift */,
 				1E047E9B222762540077896C /* ExpenseOverviewController.swift */,
 				1E047EBD22283A600077896C /* EnterExpenseController.swift */,
+				1E047EC9222869CC0077896C /* TravelerBalanceController.swift */,
 				1E047EBF22283A910077896C /* DetailedBalanceController.swift */,
+				1EC263EA2231B93B00BF1959 /* LoginController.swift */,
+				1EC263E72231A3F700BF1959 /* Views */,
 				1E602F5F222B2F350018E248 /* Cells */,
 			);
 			path = Controllers;
@@ -136,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				1E047EBA22276ECC0077896C /* UIViewController+Alerts.swift */,
+				1EC263DB2230E31900BF1959 /* Extension+UISetup.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -148,6 +189,34 @@
 				1E602F62222B306F0018E248 /* TripExpenseOverviewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		1EC263CD2230D06400BF1959 /* NetworkDocuments */ = {
+			isa = PBXGroup;
+			children = (
+				1EC263D52230D66A00BF1959 /* NetworkHelper.swift */,
+				1EC263D72230D70700BF1959 /* ImageHelper.swift */,
+				1EC263CB2230D05700BF1959 /* ImageAPIClient.swift */,
+				1EC263CE2230D0FA00BF1959 /* AppError.swift */,
+			);
+			path = NetworkDocuments;
+			sourceTree = "<group>";
+		};
+		1EC263D42230D16200BF1959 /* SecretKeys */ = {
+			isa = PBXGroup;
+			children = (
+				1EC263D22230D15300BF1959 /* SecretKeys.swift */,
+			);
+			path = SecretKeys;
+			sourceTree = "<group>";
+		};
+		1EC263E72231A3F700BF1959 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1EC263E52231A3EC00BF1959 /* LoginView.xib */,
+				1EC263E82231A5D700BF1959 /* LoginView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		29F2C6BF88E906F389877B6A /* Pods */ = {
@@ -230,6 +299,7 @@
 				1E047EA4222762570077896C /* LaunchScreen.storyboard in Resources */,
 				1E047EB022276BB30077896C /* GoogleService-Info.plist in Resources */,
 				1E047EA1222762570077896C /* Assets.xcassets in Resources */,
+				1EC263E62231A3EC00BF1959 /* LoginView.xib in Resources */,
 				1E047E9F222762540077896C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,20 +374,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EC263DE2231923800BF1959 /* UserSession.swift in Sources */,
 				1E047EC022283A910077896C /* DetailedBalanceController.swift in Sources */,
 				1E047EB622276DAB0077896C /* DatabaseKeys.swift in Sources */,
 				1E047EC8222854B60077896C /* TravelersCell.swift in Sources */,
 				1E047EBE22283A600077896C /* EnterExpenseController.swift in Sources */,
+				1EC263CF2230D0FA00BF1959 /* AppError.swift in Sources */,
 				1E602F63222B306F0018E248 /* TripExpenseOverviewCell.swift in Sources */,
 				1E047EF2222A0D480077896C /* TravelerSharingExpenseCell.swift in Sources */,
 				1E047EB422276D940077896C /* ExpenseEnum.swift in Sources */,
+				1EC263D32230D15300BF1959 /* SecretKeys.swift in Sources */,
 				1E047EB222276D790077896C /* Expense.swift in Sources */,
 				1E047E9C222762540077896C /* ExpenseOverviewController.swift in Sources */,
 				1E047EAC2227669E0077896C /* DatabaseManager.swift in Sources */,
+				1EC263EB2231B93B00BF1959 /* LoginController.swift in Sources */,
+				1EC263D62230D66A00BF1959 /* NetworkHelper.swift in Sources */,
+				1EC263CA2230BFFB00BF1959 /* LogicModel.swift in Sources */,
+				1EC263E02231924900BF1959 /* StorageManager.swift in Sources */,
+				1EC263CC2230D05700BF1959 /* ImageAPIClient.swift in Sources */,
+				1EC263E42231929A00BF1959 /* TEUser.swift in Sources */,
+				1EC263D12230D11F00BF1959 /* ImageModel.swift in Sources */,
 				1E047EBB22276ECC0077896C /* UIViewController+Alerts.swift in Sources */,
+				1EC263E22231925400BF1959 /* StorageKeys.swift in Sources */,
+				1EC263E92231A5D700BF1959 /* LoginView.swift in Sources */,
 				1E047E9A222762540077896C /* AppDelegate.swift in Sources */,
 				1E047EF4222A0FA70077896C /* Traveler.swift in Sources */,
 				1E047ECA222869CC0077896C /* TravelerBalanceController.swift in Sources */,
+				1EC263D82230D70700BF1959 /* ImageHelper.swift in Sources */,
+				1EC263DC2230E31900BF1959 /* Extension+UISetup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
