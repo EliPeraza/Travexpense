@@ -11,7 +11,7 @@ import UIKit
 
 struct LogicModel {
 
-  
+  public var oliExpenses = [ExpenseModel]()
   
   
 }
@@ -19,7 +19,7 @@ struct LogicModel {
 
 //
 //  func getData() -> [ExpenseModel]{
-//    var arrayToReturn = [ExpenseModel]()
+//    var arrayToReturn = [ExpenseModel](),
 //    DatabaseManager.firebaseBD.collection(DatabaseKeys.expenses).addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
 //      if let error = error {
 //        print(error.localizedDescription)

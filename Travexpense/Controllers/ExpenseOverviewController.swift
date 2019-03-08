@@ -72,6 +72,7 @@ class ExpenseOverviewController: UIViewController {
     instructionLabelThree.text = "Click below for a trip expense overview:"
     placeName.text = "Peru"
     
+    
     getDataFromFireBase()
     
 //    let urlString = "https://pixabay.com/api/?key=\(SecretKeys.imageAPIKey)&q=peru&image_type=photo"

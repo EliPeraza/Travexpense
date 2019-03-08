@@ -11,6 +11,9 @@ import FirebaseAuth
 import FirebaseFirestore
 
 final class DatabaseManager {
+  
+  static var expensesWeGetFromFireBase = [ExpenseModel]()
+  
   private init() {}
   
   static let firebaseBD: Firestore = {
@@ -49,7 +52,7 @@ final class DatabaseManager {
     })
   }
   
-  static func getExpense(completion: @escaping (([ExpenseModel])) -> Void) {
+  static func getExpense(completion: @escaping (([ExpenseModel])) -> [ExpenseModel]) {
     var finalArrayFromFirebase = [ExpenseModel]()
     firebaseBD.collection("expenses").addSnapshotListener { (snapshot, error) in
       if let snapshot = snapshot {
@@ -57,15 +60,19 @@ final class DatabaseManager {
           let receivedExpenses = ExpenseModel.init(dictionaryFromFirebase: document.data())
           finalArrayFromFirebase.append(receivedExpenses)
           print("found \(finalArrayFromFirebase.count) expenses")
-          
+
         }
-        completion(finalArrayFromFirebase)
+        expensesWeGetFromFireBase = completion(finalArrayFromFirebase)
+        print("this is the number of expenses I get in database manager expensesweget \(expensesWeGetFromFireBase.count)")
       } else if let error = error {
         print("error getting info from firebase\(error.localizedDescription)")
-        
+
       }
     }
   }
+  
+  
+  
 }
 
 

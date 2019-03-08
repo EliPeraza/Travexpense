@@ -22,6 +22,8 @@ class LoginController: UIViewController {
     usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
     usersession.userSessionAccountDelegate = self
     usersession.usersessionSignInDelegate = self
+    loginView.emailTextField.delegate = self
+    loginView.passwordTextFiled.delegate = self
   }
 }
 
@@ -75,5 +77,14 @@ extension LoginController: UserSessionSignInDelegate {
     raceReviewTabController.modalTransitionStyle = .crossDissolve
     raceReviewTabController.modalPresentationStyle = .overFullScreen
     self.present(raceReviewTabController, animated: true)
+  }
+}
+
+extension LoginController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//    loginView.emailTextField.resignFirstResponder()
+    loginView.passwordTextFiled.resignFirstResponder()
+    return true
+    
   }
 }
