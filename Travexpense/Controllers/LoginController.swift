@@ -33,7 +33,7 @@ extension LoginController: LoginViewDelegate {
       let password = loginView.passwordTextFiled.text,
       !email.isEmpty,
       !password.isEmpty else {
-        showAlert(title: "Error with password", message: "")
+        showAlert(title: "Error with password", message: "Try again", actionTitle: "Ok")
         return
     }
     switch accountLoginState {
@@ -48,7 +48,7 @@ extension LoginController: LoginViewDelegate {
 extension LoginController: UserSessionAccountCreationDelegate {
   func didCreateAccount(_ userSession: UserSession, user: User) {
     
-    showAlert(title: "Account Creater", message: "FFFFFFF") { (alert) in
+    showAlert(title: "Account Created", message: "Successfully created account", style: .alert) { (alert) in
       let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
       let navController = storyboard.instantiateViewController(withIdentifier: "MainNavigationController")
       self.present(navController, animated: true, completion: nil)
@@ -57,14 +57,14 @@ extension LoginController: UserSessionAccountCreationDelegate {
   }
   
   func didRecieveErrorCreatingAccount(_ userSession: UserSession, error: Error) {
-    showAlert(title: "Account creation error", message: error.localizedDescription)
+    showAlert(title: "Account Creation Error", message: error.localizedDescription, actionTitle: "Ok")
     
   }
 }
 
 extension LoginController: UserSessionSignInDelegate {
   func didRecieveSignInError(_ usersession: UserSession, error: Error) {
-    showAlert(title: "Sign in Error", message: error.localizedDescription)
+    showAlert(title: "Sign in Error", message: error.localizedDescription, actionTitle: "Ok")
   }
   
   func didSignInExistingUser(_ usersession: UserSession, user: User) {

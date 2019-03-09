@@ -13,6 +13,7 @@ import Kingfisher
 class ExpenseOverviewController: UIViewController {
   
   
+  
   @IBOutlet weak var placeName: UILabel!
   
   @IBOutlet weak var placeImage: UIImageView!
@@ -101,7 +102,7 @@ class ExpenseOverviewController: UIViewController {
   private func getDataFromFireBase() {
     DatabaseManager.firebaseBD.collection(DatabaseKeys.expenses).addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
       if let error = error {
-        self.showAlert(title: "Network Error", message: error.localizedDescription)
+        self.showAlert(title: "Network Error", message: error.localizedDescription, actionTitle: "Ok")
       } else if let snapShot = snapShot {
         var expenses = [ExpenseModel]()
         for document in snapShot.documents {

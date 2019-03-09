@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // if user is logged in present the tab bar controller
     if let _ = usersession.getCurrentUser() {
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
-      let raceReviewsTabController = storyboard.instantiateViewController(withIdentifier: "MainNavigationController")
-      window?.rootViewController = raceReviewsTabController
+      let travexpenseTabController = storyboard.instantiateViewController(withIdentifier: "TravexpenseTab")
+      window?.rootViewController = travexpenseTabController
     }
       
       // if there isn't a logged user, show the login view controller

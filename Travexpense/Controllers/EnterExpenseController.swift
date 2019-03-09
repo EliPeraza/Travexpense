@@ -119,7 +119,7 @@ class EnterExpenseController: UIViewController {
     
     let displayNames = selectedTravelersToSplitExpense.joined(separator: ", ")
     
-    showAlert(title: "Split this expense among:", message: displayNames) { (alert) in
+    showAlert(title: "Split this expense among:", message: displayNames, style: .alert) { (alert) in
       let ok = UIAlertAction(title: "Ok", style: .default) { (done) in
         
         
@@ -127,13 +127,8 @@ class EnterExpenseController: UIViewController {
           self.dictionaryOfTravelersSplittingExpense[person] = person
           print(self.dictionaryOfTravelersSplittingExpense)
         }
-
-        }
-
-      let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-      alert.addAction(ok)
-      alert.addAction(cancel)
-      self.present(alert, animated: true, completion: nil)
+        
+      }
     }
     
     print("travelers sharing expense: \(selectedTravelersToSplitExpense)")
@@ -149,7 +144,7 @@ class EnterExpenseController: UIViewController {
     }
     
     guard !expenseCategory.isEmpty else {
-     showAlert(title: "Missing Information", message: "Select an expense category")
+      showAlert(title: "Missing Information", message: "Select an expense category", actionTitle: "Ok")
       return
     }
     
@@ -157,26 +152,25 @@ class EnterExpenseController: UIViewController {
       !expenseDescription.isEmpty,
     expenseDescription != expenseDescriptionPlaceHolder
     else {
-        showAlert(title: "Missing Description", message: "Please enter more info")
+      showAlert(title: "Missing Description", message: "Please enter more info", actionTitle: "Ok")
         return
     }
     
     guard !dictionaryOfTravelersSplittingExpense.isEmpty else {
-     showAlert(title: "Select Travelers", message: "Select and ADD travelers you are sharing the expense with")
+      showAlert(title: "Select Travelers", message: "Select and ADD travelers you are sharing the expense with", actionTitle: "Ok")
       return
     }
     
     let amount = amountTextField.text ?? "0.0"
     guard let amountToSave = Double(amount)  else {
-      showAlert(title: "Missing amount", message: "Please enter the total amount to be split evenly between travelers")
+      showAlert(title: "Missing amount", message: "Please enter the total amount to be split evenly between travelers", actionTitle: "Ok")
      return
     }
     
-    let expense = ExpenseModel.init(userID: userID, expenseCategory: expenseCategory, expenseDescription: expenseDescription, expenseAmount: amountToSave, travelersSharingExpense: dictionaryOfTravelersSplittingExpense)
-   
-    DatabaseManager.postExpense(expense: expense)
-    
-    showAlert(title: "Saved", message: "Awesome! This will be reflected in the balance for all selected travelers")
+//    let expense = ExpenseModel.init(userID: userID, expenseCategory: expenseCategory, expenseDescription: expenseDescription, expenseAmount: amountToSave, travelersSharingExpense: dictionaryOfTravelersSplittingExpense)
+//
+//    DatabaseManager.postExpense(expense: expense)
+    showAlert(title: "Saved", message: "Awesome! This will be reflected in the balance for all selected travelers", actionTitle: "Ok")
     
   }
   

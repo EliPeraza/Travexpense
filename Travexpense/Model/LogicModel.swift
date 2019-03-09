@@ -10,30 +10,21 @@ import Foundation
 import UIKit
 
 struct LogicModel {
-
-  public var oliExpenses = [ExpenseModel]()
+  
+  public func splitAmount(totalAMount: Double, peopleSplittingTheBill: [String]) -> [String : Double] {
+    var amountToReturn = [String : Double]()
+    
+    let x = totalAMount / Double(peopleSplittingTheBill.count)
+    
+    for user in peopleSplittingTheBill {
+      amountToReturn[user] =  x
+    }
+    
+    return amountToReturn
+  }
   
   
 }
 
 
-//
-//  func getData() -> [ExpenseModel]{
-//    var arrayToReturn = [ExpenseModel](),
-//    DatabaseManager.firebaseBD.collection(DatabaseKeys.expenses).addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
-//      if let error = error {
-//        print(error.localizedDescription)
-//      } else if let snapShot = snapShot {
-//        var expenses = [ExpenseModel]()
-//        for document in snapShot.documents {
-//          let expense = ExpenseModel(dictionaryFromFirebase: document.data())
-//          print(document.data())
-//          expenses.append(expense)
-//        }
-//        arrayToReturn = expenses
-//        print("found \(expenses.count) expenses")
-//      }
-//    }
-//    return arrayToReturn
-//  }
-//
+

@@ -16,16 +16,18 @@ struct ExpenseModel: Codable {
   let expenseDescription: String
   let expenseAmount: Double
   var travelersSharingExpense: [String:String]
+  var splittedAmountDictionary: [String : Double]
   
   
   // initializer to post in Firebase
-  init( userID: String, /*expenseID: String*/ expenseCategory: String, expenseDescription: String, expenseAmount: Double, travelersSharingExpense: [String:String]){
+  init( userID: String, /*expenseID: String*/ expenseCategory: String, expenseDescription: String, expenseAmount: Double, travelersSharingExpense: [String:String], splittedAmountDictionary: [String : Double]){
     self.userID = userID
 //    self.expenseID = expenseID
     self.expenseCategory = expenseCategory
     self.expenseDescription = expenseDescription
     self.expenseAmount = expenseAmount
     self.travelersSharingExpense = travelersSharingExpense
+    self.splittedAmountDictionary = splittedAmountDictionary
   }
   
   //initializer to get data from firebase
@@ -36,6 +38,7 @@ struct ExpenseModel: Codable {
     self.expenseDescription = dictionaryFromFirebase["expenseDescription"] as? String ?? "didn't find description for expense"
     self.expenseAmount = dictionaryFromFirebase["expenseAmount"] as? Double ?? 0.0
     self.travelersSharingExpense = dictionaryFromFirebase["travelersSharingExpense"] as? [String : String] ?? ["No travelers were selected to share expense" : "None"]
+    self.splittedAmountDictionary = dictionaryFromFirebase["splittedAmountDictionary"] as? [String : Double] ?? ["No split amount found" : 0.0]
     
   }
   
