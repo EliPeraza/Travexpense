@@ -48,7 +48,6 @@ class EnterExpenseController: UIViewController {
   
   @IBOutlet weak var tableToSelectTravelers: UITableView!
   
-  
   @IBOutlet weak var saveSelectedTravelersButton: UIButton!
   
   @IBOutlet weak var saveExpenseEntry: UIButton!
@@ -120,19 +119,13 @@ class EnterExpenseController: UIViewController {
     let displayNames = selectedTravelersToSplitExpense.joined(separator: ", ")
     
     showAlert(title: "Split this expense among:", message: displayNames, style: .alert) { (alert) in
-      let ok = UIAlertAction(title: "Ok", style: .default) { (done) in
-        
-        
-        for person in self.selectedTravelersToSplitExpense {
-          self.dictionaryOfTravelersSplittingExpense[person] = person
-          print(self.dictionaryOfTravelersSplittingExpense)
-        }
-        
+      for person in self.selectedTravelersToSplitExpense {
+       self.dictionaryOfTravelersSplittingExpense[person] = person
+        print("This is the dictionary: \(self.dictionaryOfTravelersSplittingExpense)")
       }
+      print("travelers sharing expense: \(self.selectedTravelersToSplitExpense)")
+
     }
-    
-    print("travelers sharing expense: \(selectedTravelersToSplitExpense)")
-    
     
   }
   
@@ -167,9 +160,13 @@ class EnterExpenseController: UIViewController {
      return
     }
     
-//    let expense = ExpenseModel.init(userID: userID, expenseCategory: expenseCategory, expenseDescription: expenseDescription, expenseAmount: amountToSave, travelersSharingExpense: dictionaryOfTravelersSplittingExpense)
-//
-//    DatabaseManager.postExpense(expense: expense)
+    let splitAmout = LogicModel.splitAmount(totalAMount: amountToSave, peopleSplittingTheBill: selectedTravelersToSplitExpense)
+    print(splitAmout)
+    
+    let expense = ExpenseModel.init(userID: userID, expenseCategory: expenseCategory, expenseDescription: expenseDescription, expenseAmount: amountToSave, travelersSharingExpense: dictionaryOfTravelersSplittingExpense, splittedAmountDictionary: splitAmout)
+    
+
+    DatabaseManager.postExpense(expense: expense)
     showAlert(title: "Saved", message: "Awesome! This will be reflected in the balance for all selected travelers", actionTitle: "Ok")
     
   }

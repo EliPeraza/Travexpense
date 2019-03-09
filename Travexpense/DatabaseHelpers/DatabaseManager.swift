@@ -31,7 +31,8 @@ final class DatabaseManager {
                                                                "expenseCategory" :expense.expenseCategory,
                                                                "expenseDescription" : expense.expenseDescription,
                                                                "expenseAmount" : expense.expenseAmount,
-                                                               "travelersSharingExpense" : expense.travelersSharingExpense],
+                                                               "travelersSharingExpense" : expense.travelersSharingExpense,
+                                                               "splittedAmountDictionary" : expense.splittedAmountDictionary],
                                                     
                                                         completion: {(error) in
                                                           if let error = error {

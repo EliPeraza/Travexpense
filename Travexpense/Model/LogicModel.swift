@@ -11,7 +11,7 @@ import UIKit
 
 struct LogicModel {
   
-  public func splitAmount(totalAMount: Double, peopleSplittingTheBill: [String]) -> [String : Double] {
+  static func splitAmount(totalAMount: Double, peopleSplittingTheBill: [String]) -> [String : Double] {
     var amountToReturn = [String : Double]()
     
     let x = totalAMount / Double(peopleSplittingTheBill.count)
