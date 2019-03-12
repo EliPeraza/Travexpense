@@ -8,8 +8,14 @@
 
 import Foundation
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
+
 
 struct LogicModel {
+  
+  let expense: ExpenseModel!
+  
   
   static func splitAmount(totalAMount: Double, peopleSplittingTheBill: [String]) -> [String : Double] {
     var amountToReturn = [String : Double]()
@@ -19,10 +25,9 @@ struct LogicModel {
     for user in peopleSplittingTheBill {
       amountToReturn[user] =  x
     }
-    
     return amountToReturn
   }
-  
+    
   
 }
 

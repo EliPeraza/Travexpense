@@ -12,7 +12,7 @@ import Kingfisher
 
 class ExpenseOverviewController: UIViewController {
   
-  
+  private var usersWeGetFromFirebase = [TEUser]()
   
   @IBOutlet weak var placeName: UILabel!
   
@@ -81,6 +81,7 @@ class ExpenseOverviewController: UIViewController {
 //    placeImage.kf.setImage(with: URL(string: urlString), placeholder: UIImage(named: "imageTest"))
     
     getRandomImage()
+    getUsersFromDatabase()
     
   }
   
@@ -98,9 +99,27 @@ class ExpenseOverviewController: UIViewController {
     navigationController?.pushViewController(enterExpenseController, animated: true)
   }
   
+  private func getUsersFromDatabase() {
+    var arrayOfUsers = [TEUser]()
+    DatabaseManager.firebaseBD.collection(DatabaseKeys.UsersCollectionKey).addSnapshotListener { (snapShot, error) in
+      if let snapShot = snapShot {
+        for document in snapShot.documents {
+          let usersFromDataBase = TEUser.init(dict: document.data())
+          arrayOfUsers.append(usersFromDataBase)
+          print("found \(arrayOfUsers.count) users")
+        }
+        self.usersWeGetFromFirebase = arrayOfUsers
+        print("this is the number of users is usersWeGetFromFireBase \(self.usersWeGetFromFirebase.count)")
+        
+      } else if let error = error {
+        print("error getting users from firebase \(error.localizedDescription)")
+      }
+      
+    }
+  }
   
   private func getDataFromFireBase() {
-    DatabaseManager.firebaseBD.collection(DatabaseKeys.expenses).addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
+  DatabaseManager.firebaseBD.collection(DatabaseKeys.expenses).addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
       if let error = error {
         self.showAlert(title: "Network Error", message: error.localizedDescription, actionTitle: "Ok")
       } else if let snapShot = snapShot {
@@ -127,6 +146,7 @@ class ExpenseOverviewController: UIViewController {
       }
     }
   }
+
   
 }
 

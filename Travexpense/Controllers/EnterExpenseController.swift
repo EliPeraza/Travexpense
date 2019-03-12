@@ -163,7 +163,9 @@ class EnterExpenseController: UIViewController {
     let splitAmout = LogicModel.splitAmount(totalAMount: amountToSave, peopleSplittingTheBill: selectedTravelersToSplitExpense)
     print(splitAmout)
     
-    let expense = ExpenseModel.init(userID: userID, expenseCategory: expenseCategory, expenseDescription: expenseDescription, expenseAmount: amountToSave, travelersSharingExpense: dictionaryOfTravelersSplittingExpense, splittedAmountDictionary: splitAmout)
+    
+    
+    let expense = ExpenseModel.init(userID: userID, createdAt: Date.getISOTimestamp(), expenseCategory: expenseCategory, expenseDescription: expenseDescription, expenseAmount: amountToSave, travelersSharingExpense: dictionaryOfTravelersSplittingExpense, splittedAmountDictionary: splitAmout)
     
 
     DatabaseManager.postExpense(expense: expense)

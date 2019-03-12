@@ -44,6 +44,8 @@
 		1EC263ED223441D800BF1959 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263EC223441D800BF1959 /* ProfileController.swift */; };
 		1EC263F12234439300BF1959 /* TravexpenseTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263F02234439300BF1959 /* TravexpenseTabController.swift */; };
 		1EC263F52234511800BF1959 /* IBDesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263F42234511800BF1959 /* IBDesignableViews.swift */; };
+		1EC263F72238512B00BF1959 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263F62238512A00BF1959 /* Date+Extension.swift */; };
+		1EC263F92238514500BF1959 /* String+DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC263F82238514500BF1959 /* String+DateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +87,8 @@
 		1EC263EC223441D800BF1959 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		1EC263F02234439300BF1959 /* TravexpenseTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravexpenseTabController.swift; sourceTree = "<group>"; };
 		1EC263F42234511800BF1959 /* IBDesignableViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableViews.swift; sourceTree = "<group>"; };
+		1EC263F62238512A00BF1959 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		1EC263F82238514500BF1959 /* String+DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DateExtension.swift"; sourceTree = "<group>"; };
 		3C69E43791D69DB91630F349 /* Pods-Travexpense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travexpense.release.xcconfig"; path = "Target Support Files/Pods-Travexpense/Pods-Travexpense.release.xcconfig"; sourceTree = "<group>"; };
 		50B78BAFE3B2B99AD41CDFF1 /* Pods-Travexpense.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travexpense.debug.xcconfig"; path = "Target Support Files/Pods-Travexpense/Pods-Travexpense.debug.xcconfig"; sourceTree = "<group>"; };
 		897A6009B002E92D7CD330D6 /* Pods_Travexpense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travexpense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +189,8 @@
 			children = (
 				1E047EBA22276ECC0077896C /* UIViewController+Alerts.swift */,
 				1EC263DB2230E31900BF1959 /* Extension+UISetup.swift */,
+				1EC263F62238512A00BF1959 /* Date+Extension.swift */,
+				1EC263F82238514500BF1959 /* String+DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -385,6 +391,7 @@
 			files = (
 				1EC263DE2231923800BF1959 /* UserSession.swift in Sources */,
 				1E047EC022283A910077896C /* DetailedBalanceController.swift in Sources */,
+				1EC263F92238514500BF1959 /* String+DateExtension.swift in Sources */,
 				1E047EB622276DAB0077896C /* DatabaseKeys.swift in Sources */,
 				1E047EC8222854B60077896C /* TravelersCell.swift in Sources */,
 				1E047EBE22283A600077896C /* EnterExpenseController.swift in Sources */,
@@ -404,6 +411,7 @@
 				1EC263CC2230D05700BF1959 /* ImageAPIClient.swift in Sources */,
 				1EC263E42231929A00BF1959 /* TEUser.swift in Sources */,
 				1EC263D12230D11F00BF1959 /* ImageModel.swift in Sources */,
+				1EC263F72238512B00BF1959 /* Date+Extension.swift in Sources */,
 				1EC263ED223441D800BF1959 /* ProfileController.swift in Sources */,
 				1E047EBB22276ECC0077896C /* UIViewController+Alerts.swift in Sources */,
 				1EC263E22231925400BF1959 /* StorageKeys.swift in Sources */,

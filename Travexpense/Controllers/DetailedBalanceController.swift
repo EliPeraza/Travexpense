@@ -50,6 +50,8 @@ class DetailedBalanceController: UIViewController {
       }
     }
   }
+  
+  
 
 }
 

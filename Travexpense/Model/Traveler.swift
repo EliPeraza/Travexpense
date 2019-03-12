@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 //This info I'll get from my DataBase under user
 
 struct Traveler {
@@ -35,6 +36,7 @@ class TravelerModel {
     return travelerInfo.filter{return $0.isSelected}
   }
   
+  
   let dataArray = [Traveler(travelerName: "Oli"),
                    Traveler(travelerName: "Aaron"),
                    Traveler(travelerName: "Jeff"),
@@ -43,6 +45,7 @@ class TravelerModel {
   init() {
     travelerInfo = dataArray.map {TravelerInfo(item: $0)}
   }
+  
 }
 
 
