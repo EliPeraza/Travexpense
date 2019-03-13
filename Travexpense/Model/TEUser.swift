@@ -10,18 +10,54 @@ import Foundation
 
 
 struct TEUser {
+
   let userID: String
   let email: String
   let displayName: String
   let imageURL: String?
-  let username: String?
+  let userName: String?
   
   init(dict: [String: Any]) {
     self.userID = dict["userID"] as? String ?? "no user ID"
     self.email = dict["email"] as? String ?? "no email found"
     self.displayName = dict["displayName"] as? String ?? "no display name entered"
     self.imageURL = dict["imageURL"] as? String ?? "no imageURL"
-    self.username = dict["username"] as? String ?? "no username"
-    
+    self.userName = dict["userName"] as? String ?? "no username"
   }
 }
+
+class TravelerInfo {
+  private var ArrayOfTravelersNames: TEUser
+  
+  var isSelected = false
+  
+  var title: String {
+    return ArrayOfTravelersNames.email
+  }
+  
+  init(item: TEUser) {
+    self.ArrayOfTravelersNames = item
+  }
+}
+
+class TravelerModel {
+  static var usersFromDataBase = [TEUser]()
+
+  var travelerInfo = [TravelerInfo]()
+  
+  var selectedItems: [TravelerInfo] {
+    return travelerInfo.filter{return $0.isSelected}
+  }
+  
+  init() {
+    travelerInfo = TravelerModel.usersFromDataBase.map {TravelerInfo(item: $0)}
+  }
+  
+}
+
+
+
+
+
+
+

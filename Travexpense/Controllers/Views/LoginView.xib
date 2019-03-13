@@ -17,6 +17,7 @@
                 <outlet property="emailTextField" destination="wBh-xh-7xl" id="k8K-IQ-KZq"/>
                 <outlet property="loginButton" destination="Rew-Td-jO8" id="16q-y5-9s1"/>
                 <outlet property="passwordTextFiled" destination="qju-Dr-RXF" id="OL7-Mm-aJz"/>
+                <outlet property="usernameTextField" destination="e44-ok-8Hc" id="ckM-t8-vZg"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -58,12 +59,24 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e44-ok-8Hc">
+                    <rect key="frame" x="22" y="189.5" width="331" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="6pm-hl-kcM"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="oRo-Fq-Xs6"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e44-ok-8Hc" secondAttribute="trailing" constant="22" id="05x-q8-CPs"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Sbr-u3-cfY" secondAttribute="trailing" constant="33" id="20I-o4-oi2"/>
                 <constraint firstItem="Rew-Td-jO8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="22" id="65d-Ji-EIU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wBh-xh-7xl" secondAttribute="trailing" constant="22" id="7jb-br-z3z"/>
+                <constraint firstItem="e44-ok-8Hc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="22" id="C3E-Qu-Thp"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dWk-Ae-mF3" secondAttribute="trailing" id="Gjn-fg-5W1"/>
                 <constraint firstItem="Sbr-u3-cfY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="33" id="Kdd-qC-hNT"/>
                 <constraint firstItem="dWk-Ae-mF3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Kdx-vH-Dm6"/>
@@ -72,6 +85,7 @@
                 <constraint firstItem="dWk-Ae-mF3" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Vpg-79-KPh"/>
                 <constraint firstItem="qju-Dr-RXF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cch-8U-tVt"/>
                 <constraint firstItem="Rew-Td-jO8" firstAttribute="top" secondItem="Sbr-u3-cfY" secondAttribute="bottom" constant="11" id="dzb-2b-h4Z"/>
+                <constraint firstItem="wBh-xh-7xl" firstAttribute="top" secondItem="e44-ok-8Hc" secondAttribute="bottom" constant="22" id="hD2-VX-aqu"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qju-Dr-RXF" secondAttribute="trailing" constant="22" id="n0U-JZ-bA7"/>
                 <constraint firstItem="qju-Dr-RXF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="22" id="oIn-i5-kva"/>
                 <constraint firstItem="Sbr-u3-cfY" firstAttribute="top" secondItem="qju-Dr-RXF" secondAttribute="bottom" constant="11" id="oTF-mi-jWw"/>

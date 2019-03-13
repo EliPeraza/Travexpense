@@ -230,6 +230,7 @@ extension EnterExpenseController: UITableViewDelegate {
     
     travelerModel.travelerInfo[indexPath.row].isSelected = true
     
+    
     saveSelectedTravelersButton.isEnabled = !travelerModel.selectedItems.isEmpty
     
   }
@@ -248,13 +249,15 @@ extension EnterExpenseController: UITableViewDelegate {
 
 extension EnterExpenseController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return travelerModel.travelerInfo.count
+    return LogicModel.UsersFromDataBase.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableToSelectTravelers.dequeueReusableCell(withIdentifier: "TravelerSharingExpenseCell", for: indexPath) as?  TravelerSharingExpenseCell else { return UITableViewCell()}
-    cell.item = travelerModel.travelerInfo[indexPath.row]
-    cell.travelerNameLabel.text = travelerModel.travelerInfo[indexPath.row].title
+    
+    let currentTraveler = LogicModel.UsersFromDataBase[indexPath.row]
+    
+    cell.travelerNameLabel.text = currentTraveler.email
     
     if travelerModel.travelerInfo[indexPath.row].isSelected {
       tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)

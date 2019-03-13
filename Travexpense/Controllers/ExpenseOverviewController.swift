@@ -12,7 +12,6 @@ import Kingfisher
 
 class ExpenseOverviewController: UIViewController {
   
-  private var usersWeGetFromFirebase = [TEUser]()
   
   @IBOutlet weak var placeName: UILabel!
   
@@ -28,15 +27,23 @@ class ExpenseOverviewController: UIViewController {
   @IBOutlet weak var travelerBalanceTableView: UITableView!
   
   let travelerModel = TravelerModel()
-  let expenseCategory = ["Transportation", "Lodging", "Entertainment", "Food"]
   
   var expensesDataFromDataBase = [ExpenseModel]() {
+    didSet {
+      DispatchQueue.main.async {
+        self.travelerBalanceTableView.reloadData()
+      }
+    }
+  }
+  
+  private var usersWeGetFromFirebase = [TEUser]() {
     didSet {
       DispatchQueue.main.async {
         
       }
     }
   }
+
   
   var imageData = [ImageDetailedInfo] () {
     didSet {
@@ -70,16 +77,15 @@ class ExpenseOverviewController: UIViewController {
     //    Click on a name to see a detailed balance with a friend.
     //    Green: people owe you money. Red: You owe them money
     //    """
+    //    let urlString = "https://pixabay.com/api/?key=\(SecretKeys.imageAPIKey)&q=peru&image_type=photo"
+    //
+    //    placeImage.kf.setImage(with: URL(string: urlString), placeholder: UIImage(named: "imageTest"))
+    
     instructionLabelThree.text = "Click below for a trip expense overview:"
     placeName.text = "Peru"
     
     
     getDataFromFireBase()
-    
-//    let urlString = "https://pixabay.com/api/?key=\(SecretKeys.imageAPIKey)&q=peru&image_type=photo"
-//
-//    placeImage.kf.setImage(with: URL(string: urlString), placeholder: UIImage(named: "imageTest"))
-    
     getRandomImage()
     getUsersFromDatabase()
     
@@ -100,15 +106,17 @@ class ExpenseOverviewController: UIViewController {
   }
   
   private func getUsersFromDatabase() {
-    var arrayOfUsers = [TEUser]()
     DatabaseManager.firebaseBD.collection(DatabaseKeys.UsersCollectionKey).addSnapshotListener { (snapShot, error) in
       if let snapShot = snapShot {
+        var arrayOfUsers = [TEUser]()
         for document in snapShot.documents {
           let usersFromDataBase = TEUser.init(dict: document.data())
           arrayOfUsers.append(usersFromDataBase)
           print("found \(arrayOfUsers.count) users")
         }
         self.usersWeGetFromFirebase = arrayOfUsers
+        LogicModel.UsersFromDataBase = arrayOfUsers
+        TravelerModel.usersFromDataBase = arrayOfUsers
         print("this is the number of users is usersWeGetFromFireBase \(self.usersWeGetFromFirebase.count)")
         
       } else if let error = error {
@@ -154,7 +162,7 @@ class ExpenseOverviewController: UIViewController {
 extension ExpenseOverviewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return expenseCategory.count
+    return ExpenseType.allCases.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -201,14 +209,17 @@ extension ExpenseOverviewController: UICollectionViewDataSource, UICollectionVie
 
 extension ExpenseOverviewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return travelerModel.travelerInfo.count
+    return usersWeGetFromFirebase.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = travelerBalanceTableView.dequeueReusableCell(withIdentifier: "TravelerBalance", for: indexPath)
-    let currentTraveler = travelerModel.travelerInfo[indexPath.row]
-    cell.textLabel?.text = currentTraveler.title
-    cell.imageView?.image = UIImage(named: "traveler")
+    let currentTraveler = usersWeGetFromFirebase[indexPath.row]
+    cell.textLabel?.text = currentTraveler.email
+   
+    if let image = currentTraveler.imageURL {
+    cell.imageView?.kf.setImage(with: URL(string: image), placeholder: UIImage(named: "traveler"))
+    }
     return cell
   }
   

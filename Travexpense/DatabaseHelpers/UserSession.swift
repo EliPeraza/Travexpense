@@ -31,7 +31,7 @@ final class UserSession {
   
   // creates an authenticated user
   // on completion of creating authenticated user add the user to the firestore database
-  public func createNewAccount(email: String, password: String) {
+  public func createNewAccount(email: String, password: String, userNameToDisplay: String) {
     Auth.auth().createUser(withEmail: email, password: password) { (authDataResult, error) in
       if let error = error {
         self.userSessionAccountDelegate?.didRecieveErrorCreatingAccount(self, error: error)

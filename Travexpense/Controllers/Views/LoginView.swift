@@ -20,8 +20,13 @@ protocol LoginViewDelegate: AnyObject {
 
 class LoginView: UIView {
   
+  var emailPlaceHolder = "Please enter email"
+  var passwordPlaceHolder = "Please enter password. Six characters minimum"
+  var userNamePlaceholder = "Please enter username"
   
   @IBOutlet var contentView: UIView!
+  
+  @IBOutlet weak var usernameTextField: UITextField!
   @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var passwordTextFiled: UITextField!
   @IBOutlet weak var loginButton: UIButton!

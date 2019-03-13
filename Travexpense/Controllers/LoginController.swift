@@ -24,6 +24,7 @@ class LoginController: UIViewController {
     usersession.usersessionSignInDelegate = self
     loginView.emailTextField.delegate = self
     loginView.passwordTextFiled.delegate = self
+    loginView.usernameTextField.delegate = self
   }
 }
 
@@ -31,14 +32,16 @@ extension LoginController: LoginViewDelegate {
   func didSelectLoginButton(_ loginView: LoginView, accountLoginState: AccountLoginState) {
     guard let email = loginView.emailTextField.text,
       let password = loginView.passwordTextFiled.text,
+      let userNameChosen = loginView.usernameTextField.text,
       !email.isEmpty,
-      !password.isEmpty else {
-        showAlert(title: "Error with password", message: "Try again", actionTitle: "Ok")
+      !password.isEmpty,
+    !userNameChosen.isEmpty else {
+        showAlert(title: "Please enter all the information", message: "Try again", actionTitle: "Ok")
         return
     }
     switch accountLoginState {
     case .newAccount:
-      usersession.createNewAccount(email: email, password: password)
+      usersession.createNewAccount(email: email, password: password, userNameToDisplay: userNameChosen)
     case .existingAccount:
       usersession.signInExistingUser(email: email, password: password)
     }
@@ -81,6 +84,35 @@ extension LoginController: UserSessionSignInDelegate {
 }
 
 extension LoginController: UITextFieldDelegate {
+  
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    if textField.text == loginView.emailTextField.text {
+      textField.textColor = .black
+      textField.text = ""
+    }
+    
+    if textField.text == loginView.usernameTextField.text {
+      becomeFirstResponder()
+      textField.textColor = .black
+      textField.text = ""
+    }
+    
+    if textField.text == loginView.passwordTextFiled.text {
+      becomeFirstResponder()
+      textField.textColor = .black
+      textField.text = ""
+    }
+    
+    
+  }
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    if textField.text == "" {
+      textField.textColor = .lightGray
+      textField.text = loginView.emailPlaceHolder
+      textField.text = loginView.passwordPlaceHolder
+      textField.text = loginView.userNamePlaceholder
+    }
+  }
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 //    loginView.emailTextField.resignFirstResponder()
     loginView.passwordTextFiled.resignFirstResponder()

@@ -767,6 +767,28 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="z7f-hR-ovt">
+                                        <rect key="frame" x="0.0" y="391" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z7f-hR-ovt" id="wvV-R8-5Kl">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7x-yl-ZLm">
+                                                    <rect key="frame" x="27" y="19" width="321" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="r7x-yl-ZLm" firstAttribute="leading" secondItem="wvV-R8-5Kl" secondAttribute="leadingMargin" constant="11" id="2C5-7K-mOu"/>
+                                                <constraint firstItem="r7x-yl-ZLm" firstAttribute="bottom" secondItem="wvV-R8-5Kl" secondAttribute="bottomMargin" constant="8" id="FxN-dX-nfn"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="r7x-yl-ZLm" secondAttribute="trailing" constant="11" id="ISb-Q8-ILi"/>
+                                                <constraint firstItem="r7x-yl-ZLm" firstAttribute="top" secondItem="wvV-R8-5Kl" secondAttribute="topMargin" constant="8" id="eMB-Rw-jKG"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -780,6 +802,7 @@
                         <outlet property="emailLabel" destination="iwc-Eg-ZqA" id="YTU-Wc-b9N"/>
                         <outlet property="profileImageButton" destination="Oks-sN-H4u" id="ZfR-dH-eH4"/>
                         <outlet property="signOutButton" destination="doi-JN-oQg" id="ti9-0g-sRr"/>
+                        <outlet property="userNameLabel" destination="r7x-yl-ZLm" id="fsx-cy-jg8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KpX-1W-XRi" userLabel="First Responder" sceneMemberID="firstResponder"/>

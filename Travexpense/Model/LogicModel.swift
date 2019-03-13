@@ -15,7 +15,8 @@ import FirebaseAuth
 struct LogicModel {
   
   let expense: ExpenseModel!
-  
+  static var UsersFromDataBase = [TEUser]()
+
   
   static func splitAmount(totalAMount: Double, peopleSplittingTheBill: [String]) -> [String : Double] {
     var amountToReturn = [String : Double]()
@@ -27,7 +28,9 @@ struct LogicModel {
     }
     return amountToReturn
   }
-    
+  
+  
+  
   
 }
 

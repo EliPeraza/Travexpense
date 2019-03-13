@@ -15,11 +15,11 @@ class ProfileViewController: UITableViewController {
   
   @IBOutlet weak var profileImageButton: UIButton!
   
-  
   @IBOutlet weak var signOutButton: UIButton!
   
   @IBOutlet weak var emailLabel: UILabel!
   
+  @IBOutlet weak var userNameLabel: UILabel!
   
   
   private var usersession: UserSession!
@@ -50,6 +50,8 @@ class ProfileViewController: UITableViewController {
       return
     }
     emailLabel.text = user.email ?? "no email found for logged user"
+    
+    userNameLabel.text = user.displayName ?? "No name to display"
     
     guard let photoURL = user.photoURL else {
       print("no photoURL")
